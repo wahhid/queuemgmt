@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<openerp>
+    <data>    
+        <!-- QUEUE/DISPLAY -->		
+        <record model="ir.ui.view" id="view_queue_display_form">
+            <field name="name">queue.display.form</field>
+            <field name="model">queue.display</field>							
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Display" version="7.0">
+                	<sheet>
+	                    <group>                            
+	                        <field name="name"/>
+	                        <field name="display_type"/>	                        	                        	                        	                     
+	                        <field name="state"/>	                                                   
+	                    </group>	                		                	
+                	</sheet>  
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_queue_display_tree">
+            <field name="name">queue.display.tree</field>
+            <field name="model">queue.display</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Counter">
+	            	<field name="name"/>
+	              	<field name="display_type"/>	              	                	                    
+					<field name="state"/>	                                                   
+                </tree>
+            </field>
+        </record>
+        
+        <!-- QUEUE/TYPE -->
+		
+        <record model="ir.ui.view" id="view_queue_type_form">
+            <field name="name">queue.type.form</field>
+            <field name="model">queue.type</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Queue Type" version="7.0">
+                	<sheet>
+	                    <group>                            
+	                        <field name="name"/>
+	                        <field name="number"/>
+	                        <field name="is_active"/>	                        
+	                        <field name="state"/>	                                                   
+	                    </group>	                		                	
+                	</sheet>  
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_queue_type_tree">
+            <field name="name">queue.type.tree</field>
+            <field name="model">queue.type</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Queue Type">
+	            	<field name="name"/>
+	            	<field name="number"/>
+	            	<field name="is_active"/>	                        
+	                <field name="state"/>	                                                   
+                </tree>
+            </field>
+        </record>
+
+        <!-- QUEUE/PICKUP -->
+		
+        <record model="ir.ui.view" id="view_queue_pickup_form">
+            <field name="name">queue.pickup.form</field>
+            <field name="model">queue.pickup</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Queue Pickup" version="7.0">
+                	<sheet>
+	                    <group>                            
+				            <field name="name"/>		
+				            <field name="pickup_type"/>				            
+				            <field name="type_id"/>
+				            <field name="display_id"/>
+				            <field name="is_active"/>				            
+				            <field name="state"/>	                                                   
+	                    </group>	                		                	
+                	</sheet>  
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_queue_pickup_tree">
+            <field name="name">queue.pickup.tree</field>
+            <field name="model">queue.pickup</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Queue Pickup">
+	            	<field name="name"/>
+	            	<field name="pickup_type"/>	            	
+	            	<field name="type_id"/>
+	            	<field name="display_id"/>
+	            	<field name="is_active"/>            	
+	                <field name="state"/>	                                                   
+                </tree>
+            </field>
+        </record>
+
+		
+        
+		<!-- ACTION -->
+		<!-- DISPLAY -->
+		<record model="ir.actions.act_window" id="action_queue_display">
+            <field name="name">queue.display.action</field>
+            <field name="res_model">queue.display</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        
+		<!-- TYPE -->
+		<record model="ir.actions.act_window" id="action_queue_type">
+            <field name="name">queue.type.action</field>
+            <field name="res_model">queue.type</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+                
+        <!-- PICKUP -->
+		<record model="ir.actions.act_window" id="action_queue_pickup">
+            <field name="name">queue.pickup.action</field>
+            <field name="res_model">queue.pickup</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+             
+  	</data>
+</openerp>

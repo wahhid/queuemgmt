@@ -1,0 +1,17 @@
+<openerp>
+    <data>    	
+        <menuitem id="queue_main_menu" name="Queue"/>
+        <menuitem name="General" id="base.queue_general_menu" parent="queue_main_menu"/>        
+     	<menuitem name="Transaction" id="base.queue_trans_menu" parent="queue_main_menu"/>
+ 		
+ 		<!-- QUEUE/MENU -->
+        <!-- GENERAL -->
+        <menuitem name="Display" id="queue_general_display_menu" parent="base.queue_general_menu" action="action_queue_display" sequence="1"/>
+        <menuitem name="Type" id="queue_general_type_menu" parent="base.queue_general_menu" action="action_queue_type" sequence="2"/>
+        <menuitem name="Pickup" id="queue_general_pickup_menu" parent="base.queue_general_menu" action="action_queue_pickup" sequence="3"/>
+        
+        <!-- TRANSACTION -->
+        <menuitem name="Transaction" id="queue_transaction_trans_menu" parent="base.queue_trans_menu" action="action_queue_trans" sequence="1"/>
+                
+    </data>
+</openerp>

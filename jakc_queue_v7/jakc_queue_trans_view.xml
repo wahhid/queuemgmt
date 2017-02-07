@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<openerp>
+    <data>
+
+		<!-- QUEUE/TRANS -->
+		
+        <record model="ir.ui.view" id="view_queue_trans_form">
+            <field name="name">queue.trans.form</field>
+            <field name="model">queue.trans</field>						
+            <field name="type">form</field>						
+            <field name="arch" type="xml">
+                <form string="Queue Transaction" version="7.0">
+                	<sheet>
+	                    <group>                            
+				            <field name="trans_id"/>				            
+				            <field name="trans_date"/>
+				            <field name="type_id"/>				 
+				            <field name="display_id"/>
+				            <field name="start_date_time"/>
+				            <field name="pickup_date_time"/>				            
+				            <field name="end_date_time"/>				            
+				            <field name="state"/>	                                                   
+	                    </group>	                		                	
+                	</sheet>  
+                </form>
+            </field>
+        </record>
+		
+        <record model="ir.ui.view" id="view_queue_trans_tree">
+            <field name="name">queue.trans.tree</field>
+            <field name="model">queue.trans</field>			
+            <field name="type">tree</field>						
+            <field name="arch" type="xml">
+                <tree string="Queue Transaction">
+				 	<field name="trans_id"/>				            
+				 	<field name="trans_date"/>
+				 	<field name="type_id"/>				 	
+					<field name="display_id"/>
+				   	<field name="start_date_time"/>
+				   	<field name="pickup_date_time"/>
+					<field name="end_date_time"/>
+					<field name="printed"/>									           
+				 	<field name="state"/>	                                                   
+                </tree>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="view_queue_trans_graph">
+		   <field name="name">queue.trans.graph</field>
+		   <field name="model">queue.trans</field>
+		   <field name="type">graph</field>
+		   <field name="arch" type="xml">
+		         <graph string="Queue Transaction">
+		              <field name="type_id" group="True"/>		              
+		        </graph>
+		    </field>
+		</record>
+        
+		<record model="ir.ui.view" id="view_queue_trans_filter">
+            <field name="name">Transaction Search</field>
+            <field name="model">queue.trans</field>
+            <field name="arch" type="xml">
+                <search string="Search Transaction">
+                	<field name="trans_id"/>
+                    <field name="trans_date"/>
+ 					<field name="type_id"/>
+ 					<filter icon="terp-camera_test" string="New" name="status_new" domain="[('state','=','draft')]" help="New Status" />                    
+                    <filter icon="terp-camera_test" string="Open" name="status_open" domain="[('state','=','open')]" help="Active Status" />                                       
+                    <filter icon="terp-camera_test" string="Close" name="status_close" domain="[('state','=','done')]" help="Close Status" />                      
+                    <group expand="0" string="Group By...">                        
+                        <filter string="Status" name="status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}" />                        
+                    </group>
+                </search>
+            </field>
+        </record>   
+        
+		<!-- ACTION -->        
+        <!-- TRANS -->
+		<record model="ir.actions.act_window" id="action_queue_trans">
+            <field name="name">queue.trans.action</field>
+            <field name="res_model">queue.trans</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,graph</field>                        			        
+			<field name="context">{'search_default_status_new':1,'search_default_status_open':1,'search_default_group_status': 1}</field>                        
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">Create the first transaction</p>
+            </field>
+        </record>
+                
+  	</data>
+</openerp>
