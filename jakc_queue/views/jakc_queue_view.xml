@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="windows-1252"?>
 <openerp>
     <data>
-    
         <!-- QUEUE/DISPLAY -->
-		
         <record model="ir.ui.view" id="view_queue_display_form">
             <field name="name">queue.display.form</field>
             <field name="model">queue.display</field>							
             <field name="type">form</field>						
             <field name="arch" type="xml">
-                <form string="Display" version="7.0">
+                <form string="Display">
                 	<sheet>
 	                    <group>                            
 	                        <field name="name"/>
@@ -37,7 +35,6 @@
         </record>
         
         <!-- QUEUE/TYPE -->
-		
         <record model="ir.ui.view" id="view_queue_type_form">
             <field name="name">queue.type.form</field>
             <field name="model">queue.type</field>						
@@ -71,7 +68,6 @@
         </record>
 
         <!-- QUEUE/PICKUP -->
-		
         <record model="ir.ui.view" id="view_queue_pickup_form">
             <field name="name">queue.pickup.form</field>
             <field name="model">queue.pickup</field>						
@@ -91,7 +87,8 @@
                 </form>
             </field>
         </record>
-		
+
+
         <record model="ir.ui.view" id="view_queue_pickup_tree">
             <field name="name">queue.pickup.tree</field>
             <field name="model">queue.pickup</field>			

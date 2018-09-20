@@ -1,4 +1,4 @@
-<openerp>
+<odoo>
     <data>    	
         <menuitem id="queue_main_menu" name="Queue"/>
         <menuitem name="General" id="base.queue_general_menu" parent="queue_main_menu"/>	
@@ -17,4 +17,4 @@
         <menuitem id="queue_trans_menu" name="Transaction" parent="queue_transaction_menu"  action="queue_trans_action" sequence="2"/>
         
     </data>
-</openerp>
+</odoo>

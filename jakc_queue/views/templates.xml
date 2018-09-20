@@ -6,7 +6,6 @@
             <head>
 	            <t t-set="title">Queue Display</t>
 			    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-			      		
 			    <!-- Latest compiled and minified CSS -->
 				<link rel="stylesheet" href="/jakc_queue/static/src/css/bootstrap.min.css"></link>
 			   	<link rel="stylesheet" href="/jakc_queue/static/src/css/bootstrap-theme.min.css"></link>
