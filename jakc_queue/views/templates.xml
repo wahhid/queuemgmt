@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="windows-1252"?>
-<openerp>
+<odoo>
     <data>
     	<template id="index">
     		<html class="full">            
@@ -309,4 +309,4 @@
       		</body>      		      	
       	</template>
     </data>
-</openerp>
+</odoo>
