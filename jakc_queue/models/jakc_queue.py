@@ -18,6 +18,24 @@ AVAILABLE_DISPLAY = [
     ('route','Route'),
 ]
 
+AVAILABLE_BG_COLOR = [
+    ('bg-red', 'bg-red'),
+    ('bg-yellow', 'bg-yellow'),
+    ('bg-aqua', 'bg-aqua'),
+    ('bg-blue', 'bg-blue'),
+    ('bg-light-blue', 'bg-light-blue'),
+    ('bg-green', 'bg-green'),
+    ('bg-navy', 'bg-navy'),
+    ('bg-teal', 'bg-teal'),
+    ('bg-olive', 'bg-olive'),
+    ('bg-lime', 'bg-lime'),
+    ('bg-orange', 'bg-orange'),
+    ('bg-fuchsia', 'bg-fuchsia'),
+    ('bg-purple', 'bg-purple'),
+    ('bg-maroon', 'bg-maroon'),
+    ('bg-black', 'bg-black'),
+]
+
 
 class QueueDisplay(models.Model):
     _name = 'queue.display'
@@ -33,6 +51,7 @@ class QueueType(models.Model):
 
     name = fields.Char('Name', size=30, required=True)
     number = fields.Integer('Number', default=0)
+    bg_color = fields.Selection(AVAILABLE_BG_COLOR, 'Bg Color', default='bg_black')
     is_active = fields.Boolean('Active', default=False) 
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16 , readonly=True, default='open')
 

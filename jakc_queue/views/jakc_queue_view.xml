@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="windows-1252"?>
 <odoo>
-    <data>
         <!-- QUEUE/DISPLAY -->
         <record model="ir.ui.view" id="view_queue_display_form">
             <field name="name">queue.display.form</field>
@@ -45,6 +43,7 @@
 	                    <group>                            
 	                        <field name="name"/>
 	                        <field name="number"/>
+                            <field name="bg_color"/>
 	                        <field name="is_active"/>	                        
 	                        <field name="state"/>	                                                   
 	                    </group>	                		                	
@@ -61,6 +60,7 @@
                 <tree string="Queue Type">
 	            	<field name="name"/>
 	            	<field name="number"/>
+                    <field name="bg_color"/>
 	            	<field name="is_active"/>	                        
 	                <field name="state"/>	                                                   
                 </tree>
@@ -275,5 +275,4 @@
                 </p>
             </field>
         </record>
-  	</data>
 </odoo>

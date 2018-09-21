@@ -251,38 +251,17 @@
                     <div class="box box-widget widget-user">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
                         <div class="widget-user-header bg-green-active">
-                            <h3 class="widget-user-username">Alexander Pierce</h3>
+                            <h3 class="widget-user-username">Teller</h3>
                             <h5 class="widget-user-desc">Founder &amp; CEO</h5>
                         </div>
                         <div class="widget-user-image">
-                            <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+                            <img class="img-circle" src="static/src/img/no-image.jpg">
                         </div>
                         <div class="box-footer">
                             <div class="row">
-                                <div class="col-sm-4 border-right">
-                                    <div class="description-block">
-                                        <h5 class="description-header">3,200</h5>
-                                        <span class="description-text">SALES</span>
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-4 border-right">
-                                    <div class="description-block">
-                                        <h5 class="description-header">13,000</h5>
-                                        <span class="description-text">FOLLOWERS</span>
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                                <!-- /.col -->
-                                <div class="col-sm-4">
-                                    <div class="description-block">
-                                        <h5 class="description-header">35</h5>
-                                        <span class="description-text">PRODUCTS</span>
-                                    </div>
-                                    <!-- /.description-block -->
-                                </div>
-                                <!-- /.col -->
+                                <center>
+                                    <span class="badge bg-green-active" style="margin:20px;font-size:148px;">301</span>
+                                </center>
                             </div>
                             <!-- /.row -->
                         </div>
@@ -531,7 +510,7 @@
         .done(function(data){
             $('#counter-grid').empty();
             $.each( data.data, function( i, item ) {
-                var html =  '<div id="btn" class="col-md-6 col-xs-12" code="0001">' +
+                var html =  '<div id="btn" class="col-md-12 col-xs-12" code="0001">' +
                             '   <div class="info-box ' + item.counter_bg + '">' +
                             '       <span class="info-box-icon"><i class="fa ' + item.counter_fa + '"></i></span>' +
                             '       <div class="info-box-content">' +
