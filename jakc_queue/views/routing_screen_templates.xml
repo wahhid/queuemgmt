@@ -1,7 +1,6 @@
 <odoo>
     <data>
         <template id="routingscreen">
-            <!DOCTYPE html>
             <html>
                 <head>
                     <meta charset="utf-8"/>

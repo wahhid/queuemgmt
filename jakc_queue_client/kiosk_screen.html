@@ -17,7 +17,6 @@
     <!-- AdminLTE Skins. Choose a skin from the css/skins
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="static/src/css/skins/_all-skins.min.css">
-    <link rel="stylesheet" href="static/src/css/queue.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,7 +26,8 @@
     <![endif]-->
 
     <!-- Google Font -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-collapse sidebar-mini">
 <!-- Site wrapper -->
@@ -85,7 +85,8 @@
                         <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
                         <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
                         <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                        <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                        <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -242,26 +243,68 @@
 
         <!-- Main content -->
         <section class="content">
-            <div class="row" id="counter-grid">
-            </div>
-            <div class="row" id="queue-grid">
-                <!-- Queue Grid-->
-            </div>
-            <div class="row" id="routing-marque">
-                <div class="col-md-12 col-xs-12">
-                    <div class="alert alert-warning alert-dismissible" role="alert">
-                        <marquee><p style="font-family: Impact; font-size: 36pt">Lorem ipsum dolor Lorem ipsum dolor
-                            Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor!</p></marquee>
+            <div class="row">
+                <div class="col-md-6 col-xs-12" id="counter-grid">
+                    <!-- Counter Grid -->
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    <div class="box box-widget widget-user">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class="widget-user-header bg-green-active">
+                            <h3 class="widget-user-username">Alexander Pierce</h3>
+                            <h5 class="widget-user-desc">Founder &amp; CEO</h5>
+                        </div>
+                        <div class="widget-user-image">
+                            <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+                        </div>
+                        <div class="box-footer">
+                            <div class="row">
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">3,200</h5>
+                                        <span class="description-text">SALES</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">13,000</h5>
+                                        <span class="description-text">FOLLOWERS</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-4">
+                                    <div class="description-block">
+                                        <h5 class="description-header">35</h5>
+                                        <span class="description-text">PRODUCTS</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
                     </div>
+                    <video controls autoplay style="display:block; margin: 0 auto;" width="350px;">
+                        <source src="static/src/vid/movie.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
-
         </section>
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
-
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.4.0
+        </div>
+        <strong>Copyright &copy; 2018 <a href="https://adminlte.io">Jakc Labs</a>.</strong> All rights
+        reserved.
+    </footer>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -472,14 +515,14 @@
 <script src="static/src/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="static/src/js/demo.js"></script>
-<!-- AdminLTE for demo purposes -->
+
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree();
     //Loading Counter
     setInterval(loadCounter, 1000);
     //Loading Queuing
-    setInterval(loadQueue, 1000);
+    //setInterval(loadQueue, 1000);
 
     function loadCounter(){
         $.getJSON('static/src/json/counter.json', function (data) {
@@ -488,28 +531,22 @@
         .done(function(data){
             $('#counter-grid').empty();
             $.each( data.data, function( i, item ) {
-                console.log(item.counter_name);
-                console.log(item.current_trans);
-                var html =  '<div class="col-md-4 col-xs-12">' +
-                            '<div class="box box-widget widget-user-2">' +
-                            '   <div class="widget-user-header ' + item.counter_bg + '">' +
-                            '       <div class="widget-user-image">' +
-                            '           <span class="info-counter-icon ' + item.counter_bg + '"><i class="fa ' + item.counter_fa + '"></i></span>' +
+                var html =  '<div id="btn" class="col-md-6 col-xs-12" code="0001">' +
+                            '   <div class="info-box ' + item.counter_bg + '">' +
+                            '       <span class="info-box-icon"><i class="fa ' + item.counter_fa + '"></i></span>' +
+                            '       <div class="info-box-content">' +
+                            '           <span class="info-box-text">' + item.counter_name + '</span>' +
+                            '           <span class="info-box-number">3 More</span>' +
+                            '           <div class="progress">' +
+                            '               <div class="progress-bar" style="width: 70%">' +
+                            '           </div>' +
                             '       </div>' +
-                            '       <h3 class="widget-user-username">' + item.counter_name + '</h3>' +
-                            '       <h5 class="widget-user-desc" id="counter-desc-01">' + item.counter_desc + '</h5>' +
+                            '       <span class="progress-description">' +
+                            '           70% Increase in 30 Days' +
+                            '       </span>' +
                             '   </div>' +
-                            '   <div class="box-footer no-padding">' +
-                            '       <center>' +
-                            '           <span class="badge ' + item.counter_bg +'" style="margin:20px;font-size:148px;">' + item.current_trans + '</span>' +
-                            '       </center>' +
-                            '   </div>' +
-                            '</div>' +
-                            '</div>';
+                            '</div>'
                 $('#counter-grid').append(html);
-                if (i == 2){
-                    return false;
-                }
             });
         })
         .fail(function(jqXHR, textStatus, errorThrown){
@@ -517,39 +554,29 @@
         });
     }
 
-     function loadQueue(){
-        $.getJSON('static/src/json/queue.json', function (data) {
+    $('#btn').click(function (e){
+       createQueue($(this).attr('code'));
+    });
 
-        })
-        .done(function(data){
-            $('#queue-grid').empty();
-            $.each( data.data, function( i, item ) {
-                console.log(item.counter_name);
-                console.log(item.current_trans);
-                var html  = '<div class="col-md-3 col-xs-12">' +
-                            '   <div class="small-box ' + item.counter_bg + '">' +
-                            '       <div class="inner">' +
-                            '           <h3>' + item.current_trans + '</h3>' +
-                            '           <p>' + item.counter_name + '</p>' +
-                            '       </div>' +
-                            '       <div class="icon">' +
-                            '           <i class="ion ion-stats-bars"></i>' +
-                            '       </div>' +
-                            '           <a href="#" class="small-box-footer">' +
-                            '           <i class="fa ' + item.counter_fa + '"></i>' +
-                            '       </a>' +
-                            '   </div>' +
-                            '</div>';
-                 $('#queue-grid').append(html);
-            });
-
-        })
-        .fail(function(jqXHR, textStatus, errorThrown){
-            console.log('getJSON request failed! ' + textStatus);
+    function createQueue(typeid){
+         console.log( "Create Queue" );
+         $.ajax({
+            url         : "/queue/app/" + typeid + "/",
+            type        : "POST",
+            data        : {
+            },
+            dataType    : "json",
+            success     : function(resp) {
+                console.log(resp);
+            },
+            error        : function(xhr, status, error){
+                console.log(xhr);
+            }
         });
     }
-
   });
+
+
 </script>
 </body>
 </html>

@@ -20,6 +20,7 @@
         'views/jakc_queue_view.xml',
         'views/jakc_queue_menu.xml',
         'views/templates.xml',
+        'views/routing_screen_templates.xml'
     ],
     # only loaded in demonstration mode
     'demo': [
