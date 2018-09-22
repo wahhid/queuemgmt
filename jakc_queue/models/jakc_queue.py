@@ -66,7 +66,6 @@ class QueuePickup(models.Model):
     is_active = fields.Boolean('Is Active',default=False)
     session_ids = fields.One2many('queue.pickup.session')
     current_session_id = fields.Many2one('queue.pikcup.session')
-    current_session_state = fields.Selection()
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16, readonly=True, default='open')
 
 
