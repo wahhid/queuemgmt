@@ -73,8 +73,7 @@
             <field name="arch" type="xml">
                 <form string="Queue Pickup" version="7.0">
                     <header>
-                        <button name="trans_open" string="Open" type="object" class="oe-highlight" state="draft,done"/>
-                        <button name="trans_close" string="Close" type="object" class="oe-highlight" state="open"/>
+                        <button name="trans_close" string="Close" type="object" class="oe-highlight" state="opened"/>
                     </header>
                 	<sheet>
 	                    <group>                            
