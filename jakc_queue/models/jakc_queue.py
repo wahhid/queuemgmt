@@ -147,6 +147,10 @@ class QueuePickup(models.Model):
 class QueuePickupLog(models.Model):
     _name = 'queue.pickup.log'
 
+    @api.one
+    def trans_close(self):
+        self.write({'log_out': datetime.now(), 'state': 'closed'})
+
     pickup_id = fields.Many2one('queue.pickup','Pickup',index=True)
     user_id = fields.Many2one('res.users', 'Operator', required=True, readonly=True)
     log_in = fields.Datetime('Log In', readonly=True, default=datetime.now())
