@@ -64,18 +64,7 @@ class QueuePickup(models.Model):
     type_id = fields.Many2one('queue.type','Queue Type',index=True, required=True)
     display_id = fields.Many2one('queue.display','Display', index=True, required=True)
     is_active = fields.Boolean('Is Active',default=False)
-    session_ids = fields.One2many('queue.pickup.session')
-    current_session_id = fields.Many2one('queue.pikcup.session')
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16, readonly=True, default='open')
-
-
-class QueuePickupSession(models.Model):
-    _name = 'queue.pickup.session'
-
-    name = fields.Char('Pickup Code', size=4, required=True)
-    date = fields.Date('Date', default=datetime.today())
-    user_id = fields.Many2one('res.users', 'Operator', required=True)
-    state = fields.Selection()
 
 
 class QueuePickupLog(models.Model):
