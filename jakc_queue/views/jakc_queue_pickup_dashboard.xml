@@ -53,6 +53,7 @@
             </field>
         </record>
 
+        <!-- Dashboard Action -->
         <record id="action_pickup_kanban" model="ir.actions.act_window">
             <field name="name">Pickup</field>
             <field name="type">ir.actions.act_window</field>
@@ -67,6 +68,7 @@
             </field>
         </record>
 
+        <!-- Dashboard Menu -->
         <menuitem id="menu_pickup_dashboard" action="action_pickup_kanban" parent="queue_main_menu" name="Dashboard"
                   sequence="1"/>
 

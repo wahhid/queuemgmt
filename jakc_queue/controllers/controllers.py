@@ -40,18 +40,18 @@ class QueuePickup(http.Controller):
         pickups = env_pickup.sudo().search([])
         return request.render('jakc_queue.pickupui', {'pickups': pickups})
 
-    @http.route('/queue/pickup/screen', type='http', auth='user')
-    def pos_web(self, debug=False, **k):
+    @http.route('/queue/pickup/screen/<int:id>', type='http', auth='user')
+    def queue_pickup_screen(self, id):
         # if user not logged in, log him in
         pickup_logs = http.request.env['queue.pickup.log'].search([
             ('state', '=', 'opened'),
-            ('user_id', '=', http.request.session.uid), ])
-        if not pickup_logs:
-            return werkzeug.utils.redirect('/web#action=point_of_sale.action_client_pos_menu')
-        context = {
-            'session_info': json.dumps(http.request.env['ir.http'].session_info())
-        }
-        return request.render('jakc_queue.pickup_screen', qcontext=context)
+            ('user_id', '=', http.request.session.uid), ], limit=1)
+        if len(pickup_logs) == 1:
+            pickup_log = pickup_logs[0]
+            pickup_data = {}
+            pickup_data.update({'pickup_id': pickup_log.id})
+            pickup_data.update({"pickup_code": pickup_log.name})
+            return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data})
 
     @http.route('/queue/pickup/<int:id>/', auth='public')
     def pickup(self, id):
@@ -73,6 +73,7 @@ class QueuePickup(http.Controller):
         else:
             return '{"success":false,"message":"No Queue"}'
 
+
 class Queue_display(http.Controller):
     
     @http.route('/queue/displayui/<display_code>/', auth='public')        
@@ -81,7 +82,7 @@ class Queue_display(http.Controller):
 
     @http.route('/queue/routeui/', auth='public')        
     def routeui(self, **kw):
-        return request.render('jakc_queue.routescreen', {})
+        return request.render('jakc_queue.routingscreen', {})
         
     @http.route('/queue/display/<display_code>/', auth='public')
     def display(self, display_code):
@@ -112,9 +113,17 @@ class Queue_type(http.Controller):
     def category_list(self, **kw):
         env_type =  http.request.env['queue.type']
         type_ids = env_type.sudo().search_read([])
-        return json.dumps(type_ids)
+        types = []
+        for type in type_ids:
+            type_data = {}
+            type_data.update({'counter_id': type.id})
+            type_data.update({'counter_name': type.name})
+            type_data.update({'counter_bg': type.bg_color})
+            type_data.update({'counter_fa': 'fa-users'})
+            type_data.update({'counter_trans': '000'})
+            types.append(type_data)
+        return json.dumps(types)
 
-    
 
 class Queue_app(http.Controller):
     
@@ -166,3 +175,7 @@ class Queue_app(http.Controller):
             return '{"success":true,"message":"","trans_id":"' + trans.trans_id.trans_id + '"}'
         else:
             return '{"success":false,"message":"No Print Data"}'
+
+    @http.route('/queue/kiosk', auth='public')
+    def queue_kiosk(self, **kw):
+        return request.render('jakc_queue.kioskscreen', {})

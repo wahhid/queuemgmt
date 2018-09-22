@@ -1,4 +1,5 @@
 <odoo>
+    <!-- QUEUE VIEW -->
         <!-- QUEUE/DISPLAY -->
         <record model="ir.ui.view" id="view_queue_display_form">
             <field name="name">queue.display.form</field>
@@ -89,7 +90,6 @@
                 </form>
             </field>
         </record>
-
 
         <record model="ir.ui.view" id="view_queue_pickup_tree">
             <field name="name">queue.pickup.tree</field>

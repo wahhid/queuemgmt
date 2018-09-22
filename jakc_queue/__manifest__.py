@@ -21,7 +21,9 @@
         'views/jakc_queue_pickup_dashboard.xml',
         'views/jakc_queue_menu.xml',
         'views/templates.xml',
-        'views/routing_screen_templates.xml'
+        'views/routing_screen_templates.xml',
+        'views/kiosk_screen_templates.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [
