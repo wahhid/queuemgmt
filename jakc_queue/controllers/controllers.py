@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import http
+from odoo.http import request
 from datetime import datetime
 import json
 import werkzeug
@@ -36,8 +37,8 @@ class QueuePickup(http.Controller):
     @http.route('/queue/pickupui/', auth='public')
     def pickupui(self, **kw):    
         env_pickup = http.request.env['queue.pickup']
-        pickups = env_pickup.sudo().search([])        
-        return http.request.render('jakc_queue.pickupui', {'pickups': pickups})
+        pickups = env_pickup.sudo().search([])
+        return request.render('jakc_queue.pickupui', {'pickups': pickups})
 
     @http.route('/queue/pickup/screen', type='http', auth='user')
     def pos_web(self, debug=False, **k):
@@ -50,7 +51,7 @@ class QueuePickup(http.Controller):
         context = {
             'session_info': json.dumps(http.request.env['ir.http'].session_info())
         }
-        return http.request.render('jakc_queue.pickup_screen', qcontext=context)
+        return request.render('jakc_queue.pickup_screen', qcontext=context)
 
     @http.route('/queue/pickup/<int:id>/', auth='public')
     def pickup(self, id):
@@ -76,18 +77,18 @@ class Queue_display(http.Controller):
     
     @http.route('/queue/displayui/<display_code>/', auth='public')        
     def displayui(self, display_code):
-        return http.request.render('jakc_queue.index', {'displaycode': display_code})
+        return request.render('jakc_queue.index', {'displaycode': display_code})
 
     @http.route('/queue/routeui/', auth='public')        
     def routeui(self, **kw):
-        return http.request.render('jakc_queue.routescreen', {})
+        return request.render('jakc_queue.routescreen', {})
         
     @http.route('/queue/display/<display_code>/', auth='public')
     def display(self, display_code):
         env_display = http.request.env['queue.display']
         displays = env_display.sudo().search([('name','=',display_code)])
-        display = displays[0]        
-        env_trans = http.request.env['queue.trans']
+        display = displays[0]
+        env_trans = request.env['queue.trans']
         transs = env_trans.sudo().search([('display_id','=',display.id),('state','=','open')])
         if transs:            
             trans = transs[0]       

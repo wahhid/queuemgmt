@@ -102,7 +102,7 @@ class QueuePickup(models.Model):
                 'pickup_id': self.id
             })
             if self.current_pickup_log_id.state == 'opened':
-                return self.open_ui()
+                return self.open_ui(self.current_pickup_log_id.id)
             return self._open_pickup_log(self.current_pickup_log_id.id)
         return self._open_pickup_log(self.current_pickup_log_id.id)
 
@@ -123,11 +123,11 @@ class QueuePickup(models.Model):
         }
 
     @api.multi
-    def open_ui(self):
+    def open_ui(self, id):
         assert len(self.ids) == 1, "you can open only one session at a time"
         return {
             'type': 'ir.actions.act_url',
-            'url': '/queue/pickup/screen',
+            'url': '/queue/pickup/screen/' + str(id),
             'target': 'self',
         }
 
