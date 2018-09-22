@@ -78,8 +78,8 @@ class QueuePickup(models.Model):
             pickup_log = pickup.pickup_log_ids.filtered(lambda r: r.user_id.id == self.env.uid and \
                                                                   not r.state == 'closed')
             # sessions ordered by id desc
-            pickup.current_session_id = pickup_log and pickup_log[0].id or False
-            pickup.current_session_state = pickup_log and pickup_log[0].state or False
+            pickup.current_pickup_log_id = pickup_log and pickup_log[0].id or False
+            pickup.current_pickup_log_state = pickup_log and pickup_log[0].state or False
 
     @api.depends('pickup_log_ids')
     def _compute_current_pickup_user(self):
