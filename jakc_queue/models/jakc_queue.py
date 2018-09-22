@@ -127,8 +127,8 @@ class QueuePickup(models.Model):
     pickup_log_ids = fields.One2many('queue.pickup.log', 'pickup_id', 'Logs', readonly=True)
     current_pickup_log_id = fields.Many2one('queue.pickup.log', compute='_compute_current_pickup_log',
                                             string='Current Pickup')
-    current_pickup_log_state = fields.Many2one('queue.pickup.log', compute='_compute_current_pickup_log',
-                                               string='Current State')
+    current_pickup_log_state = fields.Selection(AVAILABLE_PICKUP_LOG, compute='_compute_current_pickup_log',
+                                                string='Current State')
     pickup_log_username = fields.Char(compute='_compute_current_pickup_user')
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16, readonly=True, default='open')
 
