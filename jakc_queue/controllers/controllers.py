@@ -5,7 +5,14 @@ import json
 
 
 class QueuePickup(http.Controller):
-    
+
+    @http.route('/queue/pickup/listall', auth='public')
+    def category_list(self, **kw):
+        env_type = http.request.env['queue.pickup']
+        args = [('state', '=', 'open')]
+        type_ids = env_type.sudo().search_read(args)
+        return json.dumps(type_ids)
+
     def _trans_close(self, trans):
         trans_data = {}
         trans_data.update({'end_time': datetime.now().strftime('%Y-%m-%d')})
