@@ -137,7 +137,7 @@ class QueuePickupLog(models.Model):
     _name = 'queue.pickup.log'
 
     pickup_id = fields.Many2one('queue.pickup','Pickup',index=True)
-    user_id = fields.Many2one('res.user', 'Operator', required=True, readonly=True)
+    user_id = fields.Many2one('res.users', 'Operator', required=True, readonly=True)
     log_in = fields.Datetime('Log In', readonly=True, default=datetime.now())
     log_out = fields.Datetime('Log Out', readonly=True)
     state = fields.Selection(AVAILABLE_PICKUP_LOG, 'Status', size=16, readonly=True, default='opened')
