@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Blank Page</title>
+    <title>QueueLTE | Pickup Screen</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -17,6 +17,7 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="static/src/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="static/src/css/queue.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -78,7 +79,7 @@
                 <div class="box-body">
                     <div class="box box-widget widget-user">
                         <!-- Add the bg color to the header using any of the bg-* classes -->
-                        <div class="widget-user-header bg-green-active">
+                        <div class="widget-user-header bg-red">
                             <h3 class="widget-user-username">Alexander Pierce</h3>
                             <h5 class="widget-user-desc">Founder &amp; CEO</h5>
                         </div>
@@ -87,13 +88,35 @@
                         </div>
                         <div class="box-footer">
                             <center>
-                                <span class="badge bg-green-active" style="margin:20px;font-size:148px;">301</span>
+                                <span class="badge bg-red" style="margin:20px;font-size:148px;">301</span>
                             </center>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- /.box -->
+            <div class="row">
+                <div class="col-md-3 col-xs-12">
+                    <button type="button" code="pickup" class="btn btn-danger btn-lg btn3d"><span
+                            class="fa fa-play"></span> Pickup
+                    </button>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <button type="button" code="recall" class="btn btn-danger btn-lg btn3d"><span
+                            class="fa fa-bullhorn"></span> Re-call
+                    </button>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <button type="button" code="skip" class="btn btn-danger btn-lg btn3d"><span
+                            class="fa fa-stop"></span> Skip
+                    </button>
+                </div>
+                <div class="col-md-3 col-xs-12">
+                    <button type="button" code="finish" class="btn btn-danger btn-lg btn3d"><span
+                            class="fa fa-stop"></span> Finish
+                    </button>
+                </div>
+            </div>
         </div>
         <div class="col-md-6 col-xs-12">
             <!-- Default box -->
@@ -104,9 +127,9 @@
                 <div class="box-body">
                     <div class="col-md-6 col-xs-12">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>101<sup style="font-size: 20px">%</sup></h3>
+                                <h3>101</h3>
 
                                 <p>Bounce Rate</p>
                             </div>
@@ -117,9 +140,9 @@
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>102<sup style="font-size: 20px">%</sup></h3>
+                                <h3>102</h3>
 
                                 <p>Bounce Rate</p>
                             </div>
@@ -141,9 +164,9 @@
                 <div class="box-body">
                     <div class="col-md-6 col-xs-12">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>101<sup style="font-size: 20px">%</sup></h3>
+                                <h3>101</h3>
 
                                 <p>Bounce Rate</p>
                             </div>
@@ -154,9 +177,9 @@
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>102<sup style="font-size: 20px">%</sup></h3>
+                                <h3>102</h3>
 
                                 <p>Bounce Rate</p>
                             </div>
@@ -178,9 +201,9 @@
                 <div class="box-body">
                     <div class="col-md-6 col-xs-12">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>101<sup style="font-size: 20px">%</sup></h3>
+                                <h3>101</h3>
 
                                 <p>Bounce Rate</p>
                             </div>
@@ -191,9 +214,9 @@
                     </div>
                     <div class="col-md-6 col-xs-12">
                         <!-- small box -->
-                        <div class="small-box bg-green">
+                        <div class="small-box bg-red">
                             <div class="inner">
-                                <h3>102<sup style="font-size: 20px">%</sup></h3>
+                                <h3>102</h3>
 
                                 <p>Bounce Rate</p>
                             </div>
@@ -423,6 +446,10 @@
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+    $('button').click(function (e){
+        console.log($(this).attr('code'));
+
+    });
   })
 </script>
 </body>

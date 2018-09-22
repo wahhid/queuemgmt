@@ -3,14 +3,14 @@
     {
       "counter_name": "Customer Service",
       "current_trans": "202",
-      "counter_bg": "bg-yellow",
+      "counter_bg": "bg-red",
       "counter_fa": "fa-users",
       "counter_code": "0001"
     },
     {
       "counter_name": "Teller",
       "current_trans": "303",
-      "counter_bg": "bg-green",
+      "counter_bg": "bg-red",
       "counter_fa": "fa-bank",
       "counter_code": "0002"
     },

@@ -126,7 +126,7 @@ class Queue_app(http.Controller):
         types = env_type.sudo().search([])                 
         return http.request.render('jakc_queue.appui', {'types':types})
 
-    @http.route('/queue/app/<int:type_id>/', auth='public', method)
+    @http.route('/queue/app/<int:type_id>/', auth='public')
     def app(self, type_id):
         try:
             env_type = http.request.env['queue.type']
