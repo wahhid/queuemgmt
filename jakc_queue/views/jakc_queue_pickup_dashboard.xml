@@ -45,24 +45,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="container o_kanban_card_manage_pane o_invisible">
-                                    <div class="row">
-                                        <div class="col-xs-6 o_kanban_card_manage_section o_kanban_manage_view">
-                                            <div class="o_kanban_card_manage_title">
-                                                <span>View</span>
-                                            </div>
-                                            <div>
-                                                <a name="%(action_pos_session_filtered)d" type="action">Sessions</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div t-if="widget.editable" class="o_kanban_card_manage_settings row">
-                                        <div class="col-xs-12 text-right">
-                                            <a type="edit">Settings</a>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </t>
                     </templates>
