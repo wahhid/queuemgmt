@@ -95,7 +95,7 @@ class Queue_display(http.Controller):
 class Queue(http.Controller):
     @http.route('/queue/queue/<int:id>', auth='public')
     def index(self, id):
-        Types = http.request.env['queue.type']        
+        Types = http.request.env['queue.type']
         return http.request.render('jakc_queue.index', {
             'types': Types.search([('id','=', id)])
         })
@@ -106,9 +106,8 @@ class Queue_type(http.Controller):
     @http.route('/queue/type/listall', auth='public')
     def category_list(self, **kw):
         env_type =  http.request.env['queue.type']
-        type_ids = env_type.sudo().search([])
-        types = env_type.sudo().browse(type_ids)
-        return json.dumps(types)
+        type_ids = env_type.sudo().search_read([])
+        return json.dumps(type_ids)
 
     
 
