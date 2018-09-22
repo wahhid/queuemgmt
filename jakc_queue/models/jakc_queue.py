@@ -13,6 +13,11 @@ AVAILABLE_PICKUP = [
     ('device','Device'),
 ]
 
+AVAILABLE_PICKUP_LOG = [
+    ('opened', 'In Progress'),
+    ('closed', 'Closed & Posted'),
+]
+
 AVAILABLE_DISPLAY = [
     ('single','Single'),
     ('route','Route'),
@@ -67,11 +72,64 @@ class QueuePickup(models.Model):
     def trans_close(self):
         self.state = 'done'
 
+    @api.depends('pickup_log_ids')
+    def _compute_current_pickup_log(self):
+        for pickup in self:
+            pickup_log = pickup.pickup_log_ids.filtered(lambda r: r.user_id.id == self.env.uid and \
+                                                                  not r.state == 'closed')
+            # sessions ordered by id desc
+            pickup.current_session_id = pickup_log and pickup_log[0].id or False
+            pickup.current_session_state = pickup_log and pickup_log[0].state or False
+
+    @api.depends('pickup_log_ids')
+    def _compute_current_pickup_user(self):
+        for pickup in self:
+            pickup_log = pickup.pickup_log_ids.filtered(lambda s: s.state == 'opened')
+            pickup.pickup_log_username = pickup_log and pickup_log[0].user_id.name or False
+
+    @api.multi
+    def open_pickup_log_cb(self):
+        assert len(self.ids) == 1, "you can open only one pickup log at a time"
+        if not self.current_pickup_log_id:
+            self.current_pickup_log_id = self.env['queue.pickup.log'].create({
+                'user_id': self.env.uid,
+                'pickup_id': self.id
+            })
+            if self.current_pickup_log_id.state == 'opened':
+                return self.open_ui()
+            return self._open_pickup_log(self.current_pickup_log_id.id)
+        return self._open_pickup_log(self.current_pickup_log_id.id)
+
+    def _open_pickup_log(self, pickup_log_id):
+        return {
+            'name': _('Pickup Log'),
+            'view_type': 'form',
+            'view_mode': 'form,tree',
+            'res_model': 'queue.pickup.log',
+            'res_id': pickup_log_id,
+            'view_id': False,
+            'type': 'ir.actions.act_window',
+        }
+
+    @api.multi
+    def open_ui(self):
+        assert len(self.ids) == 1, "you can open only one session at a time"
+        return {
+            'type': 'ir.actions.act_url',
+            'url': '/queue/pickup/screen',
+            'target': 'self',
+        }
+
     name = fields.Char('Pickup Code', size=4, required=True)
     pickup_type = fields.Selection(AVAILABLE_PICKUP, 'Pickup Type', size=16, required=True)
     type_id = fields.Many2one('queue.type','Queue Type',index=True, required=True)
     display_id = fields.Many2one('queue.display','Display', index=True, required=True)
     pickup_log_ids = fields.One2many('queue.pickup.log', 'pickup_id', 'Logs', readonly=True)
+    current_pickup_log_id = fields.Many2one('pickup.log', 'pickup_id', compute='_compute_current_pickup_log',
+                                            string='Current Pickup')
+    current_pickup_log_state = fields.Many2one('pickup.log', 'pickup_id', compute='_compute_current_pickup_log',
+                                               string='Current State')
+    pickup_log_username = fields.Char(compute='_compute_current_pickup_user')
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16, readonly=True, default='open')
 
 
@@ -82,7 +140,7 @@ class QueuePickupLog(models.Model):
     user_id = fields.Many2one('res.user', 'Operator', required=True, readonly=True)
     log_in = fields.Datetime('Log In', readonly=True, default=datetime.now())
     log_out = fields.Datetime('Log Out', readonly=True)
-    state = fields.Selection(AVAILABLE_STATES, 'Status', size=16, readonly=True , default='open')
+    state = fields.Selection(AVAILABLE_PICKUP_LOG, 'Status', size=16, readonly=True, default='opened')
 
 
 class QueueTrans(models.Model):
