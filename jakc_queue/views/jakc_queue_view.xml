@@ -44,7 +44,6 @@
 	                        <field name="name"/>
 	                        <field name="number"/>
                             <field name="bg_color"/>
-	                        <field name="is_active"/>	                        
 	                        <field name="state"/>	                                                   
 	                    </group>	                		                	
                 	</sheet>  
@@ -61,7 +60,6 @@
 	            	<field name="name"/>
 	            	<field name="number"/>
                     <field name="bg_color"/>
-	            	<field name="is_active"/>	                        
 	                <field name="state"/>	                                                   
                 </tree>
             </field>
@@ -74,13 +72,16 @@
             <field name="type">form</field>						
             <field name="arch" type="xml">
                 <form string="Queue Pickup" version="7.0">
+                    <header>
+                        <button name="trans_open" string="Open" type="object" class="oe-highlight" state="draft,done"/>
+                        <button name="trans_close" string="Close" type="object" class="oe-highlight" state="open"/>
+                    </header>
                 	<sheet>
 	                    <group>                            
 				            <field name="name"/>		
 				            <field name="pickup_type"/>				            
 				            <field name="type_id"/>
 				            <field name="display_id"/>
-				            <field name="is_active"/>				            
 				            <field name="state"/>	                                                   
 	                    </group>	                		                	
                 	</sheet>  
@@ -99,8 +100,7 @@
 	            	<field name="pickup_type"/>	            	
 	            	<field name="type_id"/>
 	            	<field name="display_id"/>
-	            	<field name="is_active"/>            	
-	                <field name="state"/>	                                                   
+                    <field name="state"/>
                 </tree>
             </field>
         </record>
@@ -114,9 +114,9 @@
             <field name="arch" type="xml">
                 <form string="Queue Pickup Log" version="7.0">
                 	<sheet>
-	                    <group>                            
-				            <field name="pickup_id"/>				            
-				            <field name="queue_type_id"/>
+	                    <group>
+                            <field name="pickup_id"/>
+                            <field name="user_id"/>
 				            <field name="log_in"/>
 				            <field name="log_out"/>				            
 				            <field name="state"/>	                                                   
@@ -132,8 +132,8 @@
             <field name="type">tree</field>						
             <field name="arch" type="xml">
                 <tree string="Queue Pickup Log">
-					<field name="pickup_id"/>				            
-				  	<field name="queue_type_id"/>
+					<field name="pickup_id"/>
+                    <field name="user_id"/>
 					<field name="log_in"/>
 				 	<field name="log_out"/>				            
 				 	<field name="state"/>	                                                   

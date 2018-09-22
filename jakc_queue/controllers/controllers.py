@@ -38,42 +38,25 @@ class QueuePickup(http.Controller):
         pickups = env_pickup.sudo().search([])        
         return http.request.render('jakc_queue.pickupui', {'pickups': pickups})
 
-    @http.route('/queue/pickup/<pickup_code>/', auth='public')
-    def pickup(self, pickup_code):       
+    @http.route('/queue/pickup/<int:id>/', auth='public')
+    def pickup(self, id):
         env_pickup = http.request.env['queue.pickup']
-        pickups = env_pickup.sudo().search([('name','=',pickup_code)])        
-        pickup = pickups[0]                            
-        type_id = pickup.type_id        
-        display_id = pickup.display_id                            
+        pickup = env_pickup.sudo().browse(id)
+        type_id = pickup.type_id
+        display_id = pickup.display_id
         env_trans = http.request.env['queue.trans']
-        transs = env_trans.sudo().search([('display_id','=',display_id.id),('type_id','=',type_id.id),('state','=','open')])
-        if transs:
-            trans = transs[0]                
-            self._trans_close(trans)
-            transs = env_trans.sudo().search([('type_id','=',type_id.id),('state','=','draft')])            
-            if transs:
-                trans = transs[0]
-                trans_data = {}
-                trans_data.update({'display_id': display_id.id})
-                trans_data.update({'pickup_date_time': datetime.now()})
-                trans_data.update({'state': 'open'})
-                trans.sudo().write(trans_data)
-                return '{"success":true,"message":"Pickup Successfully","trans_id":"' + trans.trans_id + '"}'
-            else:
-                return '{"success":false,"message":"No Queue"}'
+        trans_ids = env_trans.sudo().search([('type_id', '=', type_id.id), ('state', '=', 'draft')],
+                                            order='create_date', limit=1)
+        if len(trans_ids) == 1:
+            trans_id = env_trans.sudo().browse(trans_ids[0])
+            trans_data = {}
+            trans_data.update({'display_id': display_id.id})
+            trans_data.update({'pickup_date_time': datetime.now()})
+            trans_data.update({'state': 'open'})
+            trans_id.sudo().write(trans_data)
+            return '{"success":true,"message":"Pickup Successfully","trans_id":"' + trans_id.trans_id + '"}'
         else:
-            transs = env_trans.sudo().search([('type_id','=',type_id.id),('state','=','draft')])            
-            if transs:
-                trans = transs[0]                
-                trans_data = {}
-                trans_data.update({'display_id': display_id.id})
-                trans_data.update({'pickup_date_time': datetime.now()})
-                trans_data.update({'state': 'open'})                
-                trans.sudo().write(trans_data)
-                return '{"success":true,"message":"Pickup Successfully","trans_id":"' + trans.trans_id + '"}'
-            else:
-                return '{"success":false,"message":"No Queue"}'
-        
+            return '{"success":false,"message":"No Queue"}'
 
 class Queue_display(http.Controller):
     

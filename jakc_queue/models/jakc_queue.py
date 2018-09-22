@@ -59,11 +59,19 @@ class QueueType(models.Model):
 class QueuePickup(models.Model):
     _name = 'queue.pickup'
 
+    @api.one
+    def trans_open(self):
+        self.state = 'open'
+
+    @api.one
+    def trans_close(self):
+        self.state = 'done'
+
     name = fields.Char('Pickup Code', size=4, required=True)
     pickup_type = fields.Selection(AVAILABLE_PICKUP, 'Pickup Type', size=16, required=True)
     type_id = fields.Many2one('queue.type','Queue Type',index=True, required=True)
     display_id = fields.Many2one('queue.display','Display', index=True, required=True)
-    is_active = fields.Boolean('Is Active',default=False)
+    pickup_log_ids = fields.One2many('queue.pickup.log', 'pickup_id', 'Logs', readonly=True)
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16, readonly=True, default='open')
 
 
@@ -71,9 +79,9 @@ class QueuePickupLog(models.Model):
     _name = 'queue.pickup.log'
 
     pickup_id = fields.Many2one('queue.pickup','Pickup',index=True)
-    queue_type_id = fields.Many2one('queue.type','Queue Type',index=True)
-    log_in = fields.Datetime('Log In')
-    log_out = fields.Datetime('Log Out')
+    user_id = fields.Many2one('res.user', 'Operator', required=True, readonly=True)
+    log_in = fields.Datetime('Log In', readonly=True, default=datetime.now())
+    log_out = fields.Datetime('Log Out', readonly=True)
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16, readonly=True , default='open')
 
 
