@@ -2,6 +2,7 @@
 from odoo import http
 from datetime import datetime
 import json
+import werkzeug
 
 
 class QueuePickup(http.Controller):
@@ -37,6 +38,19 @@ class QueuePickup(http.Controller):
         env_pickup = http.request.env['queue.pickup']
         pickups = env_pickup.sudo().search([])        
         return http.request.render('jakc_queue.pickupui', {'pickups': pickups})
+
+    @http.route('/queue/pickup/screen', type='http', auth='user')
+    def pos_web(self, debug=False, **k):
+        # if user not logged in, log him in
+        pickup_logs = http.request.env['queue.pickup.log'].search([
+            ('state', '=', 'opened'),
+            ('user_id', '=', http.request.session.uid), ])
+        if not pickup_logs:
+            return werkzeug.utils.redirect('/web#action=point_of_sale.action_client_pos_menu')
+        context = {
+            'session_info': json.dumps(http.request.env['ir.http'].session_info())
+        }
+        return http.request.render('jakc_queue.pickup_screen', qcontext=context)
 
     @http.route('/queue/pickup/<int:id>/', auth='public')
     def pickup(self, id):

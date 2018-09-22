@@ -88,6 +88,12 @@ class QueuePickup(models.Model):
             pickup.pickup_log_username = pickup_log and pickup_log[0].user_id.name or False
 
     @api.multi
+    def open_existing_pickup_log_cb_close(self):
+        assert len(self.ids) == 1, "you can open only one session at a time"
+        return self.open_pickup_log_cb()
+
+
+    @api.multi
     def open_pickup_log_cb(self):
         assert len(self.ids) == 1, "you can open only one pickup log at a time"
         if not self.current_pickup_log_id:
@@ -98,6 +104,11 @@ class QueuePickup(models.Model):
             if self.current_pickup_log_id.state == 'opened':
                 return self.open_ui()
             return self._open_pickup_log(self.current_pickup_log_id.id)
+        return self._open_pickup_log(self.current_pickup_log_id.id)
+
+    @api.multi
+    def open_existing_pickup_log_cb(self):
+        assert len(self.ids) == 1, "you can open only one session at a time"
         return self._open_pickup_log(self.current_pickup_log_id.id)
 
     def _open_pickup_log(self, pickup_log_id):
