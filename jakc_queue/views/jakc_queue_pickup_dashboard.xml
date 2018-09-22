@@ -10,7 +10,7 @@
                     <field name="pickup_log_ids"/>
                     <field name="current_pickup_log_id"/>
                     <field name="current_pickup_log_state"/>
-                    <field name="pos_pickup_log_username"/>
+                    <field name="pickup_log_username"/>
                     <templates>
                         <t t-name="kanban-box">
                             <div>
@@ -39,7 +39,8 @@
                                                     class="btn btn-default" name="open_existing_session_cb_close"
                                                     type="object">Close
                                             </button>
-                                            <button t-if="!record.current_session_id.raw_value" class="btn btn-primary"
+                                            <button t-if="!record.current_pickup_log_id.raw_value"
+                                                    class="btn btn-primary"
                                                     name="open_pickup_log_cb" type="object">New Pickup Log
                                             </button>
                                         </div>
