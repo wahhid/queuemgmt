@@ -73,7 +73,9 @@
             <field name="arch" type="xml">
                 <form string="Queue Pickup" version="7.0">
                     <header>
-                        <button name="trans_close" string="Close" type="object" class="oe-highlight" state="opened"/>
+                        <button name="trans_open" string="Close" type="object" class="oe-highlight"
+                                state="draft,close"/>
+                        <button name="trans_close" string="Close" type="object" class="oe-highlight" state="open"/>
                         <field name="state" widget="statusbar"/>
                     </header>
                 	<sheet>
@@ -111,7 +113,11 @@
             <field name="model">queue.pickup.log</field>						
             <field name="type">form</field>						
             <field name="arch" type="xml">
-                <form string="Queue Pickup Log" version="7.0">
+                <form string="Queue Pickup Log">
+                    <header>
+                        <button name="trans_close" string="Close" type="object" class="oe-highlight" state="opened"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
                 	<sheet>
 	                    <group>
                             <field name="pickup_id"/>
