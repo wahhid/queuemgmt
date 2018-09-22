@@ -52,6 +52,23 @@
                 </kanban>
             </field>
         </record>
-    </data>
 
+        <record id="action_pickup_kanban" model="ir.actions.act_window">
+            <field name="name">Pickup</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">queue.pickup</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form</field>
+            <field name="domain"></field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a new Pickup.
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_pickup_dashboard" action="action_pickup_kanban" parent="queue_main_menu" name="Dashboard"
+                  sequence="1"/>
+
+    </data>
 </odoo>
