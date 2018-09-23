@@ -8,7 +8,7 @@
 
     function loadCounter(){
         //$.getJSON('static/src/json/counter.json', function (data) {
-        $.getJSON('/queue/routeui/listactive/1, function (data) {
+        $.getJSON('/queue/routeui/listactive/1', function (data) {
 
         })
         .done(function(data){
