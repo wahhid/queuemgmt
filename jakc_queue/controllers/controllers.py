@@ -62,25 +62,17 @@ class QueuePickup(http.Controller):
         queue_pickup_obj = http.request.env['queue.pickup']
         queue_pickup_log_obj = http.request.env['queue.pickup.log']
         queue_trans_obj = http.request.env['queue.trans']
-
         pickup = queue_pickup_obj.browse(id)
         if pickup:
             trans_args = [('state', '=', 'draft'), ('type_id', '=', pickup.type_id.id)]
             trans_ids = queue_trans_obj.search(trans_args, limit=1)
             if len(trans_ids) == 1:
-                display_id = pickup.display_id
-                type_id = pickup.type_id
-                env_trans = http.request.env['queue.trans']
-                trans_ids = env_trans.sudo().search([('type_id', '=', type_id.id), ('state', '=', 'draft')],
-                                                    order='create_date', limit=1)
-        # if len(trans_ids) == 1:
-        #    trans_id = env_trans.sudo().browse(trans_ids[0])
-        #    trans_data = {}
-        #    trans_data.update({'display_id': display_id.id})
-        #    trans_data.update({'pickup_date_time': datetime.now()})
-        #    trans_data.update({'state': 'open'})
-        #    trans_id.sudo().write(trans_data)
-        #    return '{"success":true,"message":"Pickup Successfully","trans_id":"' + trans_id.trans_id + '"}'
+                trans_id = queue_trans_obj.browse(trans_ids[0])
+                trans_id.state = 'open'
+                trans_id.type_id = pickup.type_id.id
+                return json.dumps([trans_id])
+            else:
+                return '{"success":false,"message":"No Queue"}'
         else:
             return '{"success":false,"message":"No Queue"}'
 
