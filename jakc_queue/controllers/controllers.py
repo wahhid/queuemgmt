@@ -133,13 +133,12 @@ class Queue_display(http.Controller):
         trans_ids = queue_trans_obj.search(trans_args)
         trans_list = []
         for trans_id in trans_ids:
-            trans = queue_trans_obj.browse(trans_id)
             trans_data = {}
-            trans_data.update({'counter_name': trans.type_id.name})
+            trans_data.update({'counter_name': trans_id.type_id.name})
             trans_data.update({'current_trans': '202'})
             trans_data.update({'counter_fa': 'fa-users'})
             trans_data.update({'counter_code': '0001'})
-            type_id = queue_type_obj.browse(trans.type_id.id)
+            type_id = queue_type_obj.browse(trans_id.type_id.id)
             trans_data.update({'counter_bg': type_id.bg_color})
             trans_list.append(trans_data)
         return json.dumps(trans_list)
