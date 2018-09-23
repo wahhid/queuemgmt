@@ -72,7 +72,7 @@
             <field name="model">queue.pickup</field>						
             <field name="type">form</field>						
             <field name="arch" type="xml">
-                <form string="Queue Pickup" version="7.0">
+                <form string="Queue Pickup">
                     <header>
                         <button name="trans_open" string="Close" type="object" class="oe-highlight"
                                 state="draft,close"/>
@@ -85,7 +85,22 @@
 				            <field name="pickup_type"/>				            
 				            <field name="type_id"/>
 				            <field name="display_id"/>
+                            <field name="current_pickup_log_id"/>
+                            <field name="current_pickup_log_state"/>
+                            <field name="pickup_log_username"/>
                         </group>
+                        <notebook>
+                            <page string="Logs">
+                                <field name="pickup_log_ids">
+                                    <tree>
+                                        <field name="user_id"/>
+                                        <field name="log_in"/>
+                                        <field name="log_out"/>
+                                        <field name="state"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
                 	</sheet>  
                 </form>
             </field>
