@@ -165,7 +165,7 @@ class QueuePickupLog(models.Model):
 class QueueTrans(models.Model):
     _name = 'queue.trans'
 
-    trans_id = fields.Char('Transaction ID', size=4, required=True)
+    trans_id = fields.Char('Transaction ID', size=4, required=False, readonly=True)
     trans_date = fields.Date('Date', required=True , default=fields.Date.today)
     type_id = fields.Many2one('queue.type', 'Type', index=True)
     display_id = fields.Many2one('queue.display','Display',index=True)
