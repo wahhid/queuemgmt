@@ -45,7 +45,7 @@
 
      function loadQueue(){
         //$.getJSON('static/src/json/queue.json', function (data) {
-        $.getJSON('/jakc_queue/static/src/json/queue.json', function (data) {
+        $.getJSON('/queue/routeui/listnew', function (data) {
         })
         .done(function(data){
             $('#queue-grid').empty();
