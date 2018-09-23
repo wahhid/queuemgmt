@@ -126,7 +126,7 @@ class Queue_display(http.Controller):
         return json.dumps(pickup_list)
 
     @http.route('/queue/routeui/listnew/', auth='public')
-    def display_list_active(self):
+    def display_list_new(self):
         queue_type_obj = http.request.env['queue.type']
         queue_trans_obj = http.request.env['queue.trans']
         trans_args = [('state', '=', 'draft')]
