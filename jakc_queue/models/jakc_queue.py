@@ -180,11 +180,22 @@ class QueueTrans(models.Model):
 
     @api.model
     def create(self,values):
+        queue_type_obj = self.env['queue.type']
+        queue_trans_obj = self.env['queue.trans']
+        trans_id = '000'
+        if 'type_id' in values.keys():
+            trans_args = [('type_id', '=', values.get('type_id'), ('trans_date', '=', datetime.today()))]
+            queue_trans_ids = queue_type_obj.search(trans_args)
+            if len(queue_trans_ids) > 0:
+                trans_id = str(len(queue_trans_ids) + 1).zfill(3)
+            else:
+                trans_id = str(len(1)).zfill(3)
+        values.update({'trans_id': trans_id})
         result = super(QueueTrans,self).create(values)
-        trans_data = {}
-        trans_data.update({'trans_id': result.id})
-        self.env['queue.trans.print'].create(trans_data)
-        self.env['queue.trans.sound'].create(trans_data)
+        # trans_data = {}
+        # trans_data.update({'trans_id': result.id})
+        # self.env['queue.trans.print'].create(trans_data)
+        # self.env['queue.trans.sound'].create(trans_data)
         return result
         
         
