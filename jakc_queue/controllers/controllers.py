@@ -65,9 +65,10 @@ class QueuePickup(http.Controller):
         pickup = queue_pickup_obj.browse(id)
         if pickup:
             trans_args = [('state', '=', 'draft'), ('type_id', '=', pickup.type_id.id)]
-            trans_ids = queue_trans_obj.search(trans_args, limit=1)
+            trans_ids = queue_trans_obj.search(trans_args, order='create_date', limit=1)
             if len(trans_ids) == 1:
                 trans_id = queue_trans_obj.browse(trans_ids[0])
+                _logger.info(trans_id)
                 trans_id.write({'state': 'open', 'type_id': pickup.type_id.id})
                 return json.dumps([trans_id])
             else:
