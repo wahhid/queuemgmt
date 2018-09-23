@@ -68,8 +68,7 @@ class QueuePickup(http.Controller):
             trans_ids = queue_trans_obj.search(trans_args, limit=1)
             if len(trans_ids) == 1:
                 trans_id = queue_trans_obj.browse(trans_ids[0])
-                trans_id.state = 'open'
-                trans_id.type_id = pickup.type_id.id
+                trans_id.write({'state': 'open', 'type_id': pickup.type_id.id})
                 return json.dumps([trans_id])
             else:
                 return '{"success":false,"message":"No Queue"}'
