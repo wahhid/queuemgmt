@@ -7,7 +7,8 @@
     setInterval(loadQueue, 1000);
 
     function loadCounter(){
-        $.getJSON('static/src/json/counter.json', function (data) {
+        //$.getJSON('static/src/json/counter.json', function (data) {
+        $.getJSON('/jakc_queue/static/src/json/counter.json', function (data) {
 
         })
         .done(function(data){
@@ -43,8 +44,8 @@
     }
 
      function loadQueue(){
-        $.getJSON('static/src/json/queue.json', function (data) {
-
+        //$.getJSON('static/src/json/queue.json', function (data) {
+        $.getJSON('/jakc_queue/static/src/json/queue.json', function (data) {
         })
         .done(function(data){
             $('#queue-grid').empty();
