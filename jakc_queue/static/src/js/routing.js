@@ -50,8 +50,6 @@
         .done(function(data){
             $('#queue-grid').empty();
             $.each( data.data, function( i, item ) {
-                console.log(item.counter_name);
-                console.log(item.current_trans);
                 var html  = '<div class="col-md-3 col-xs-12">' +
                             '   <div class="small-box ' + item.counter_bg + '">' +
                             '       <div class="inner">' +
