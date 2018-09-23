@@ -13,7 +13,7 @@
         })
         .done(function(data){
             $('#counter-grid').empty();
-            $.each( data.data, function( i, item ) {
+            $.each( data, function( i, item ) {
                 console.log(item.counter_name);
                 console.log(item.current_trans);
                 var html =  '<div class="col-md-4 col-xs-12">' +
