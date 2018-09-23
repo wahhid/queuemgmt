@@ -167,7 +167,7 @@ class QueueTrans(models.Model):
 
     trans_id = fields.Char('Transaction ID', size=4, required=False, readonly=True)
     trans_date = fields.Date('Date', required=True , default=fields.Date.today)
-    type_id = fields.Many2one('queue.type', 'Type', index=True)
+    type_id = fields.Many2one('queue.type', 'Type', required=True, index=True)
     display_id = fields.Many2one('queue.display','Display',index=True)
     pickup_id = fields.Many2one('queue.pickup', 'Pickup', index=True)
     start_date_time = fields.Datetime('Start Time', default=fields.Datetime.now)
@@ -184,7 +184,8 @@ class QueueTrans(models.Model):
         queue_trans_obj = self.env['queue.trans']
         trans_id = '000'
         if 'type_id' in values.keys():
-            trans_args = [('type_id', '=', values.get('type_id'), ('trans_date', '=', datetime.today()))]
+            trans_args = [
+                ('type_id', '=', values.get('type_id'), ('trans_date', '=', datetime.now().strftime('%Y-%m-%d')))]
             queue_trans_ids = queue_type_obj.search(trans_args)
             if len(queue_trans_ids) > 0:
                 trans_id = str(len(queue_trans_ids) + 1).zfill(3)
