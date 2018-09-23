@@ -139,9 +139,9 @@ class Queue_type(http.Controller):
         types = []
         for type in type_ids:
             type_data = {}
-            type_data.update({'counter_id': type.id})
-            type_data.update({'counter_name': type.name})
-            type_data.update({'counter_bg': type.bg_color})
+            type_data.update({'counter_id': type['id']})
+            type_data.update({'counter_name': type['name']})
+            type_data.update({'counter_bg': type['bg_color']})
             type_data.update({'counter_fa': 'fa-users'})
             type_data.update({'counter_trans': '000'})
             types.append(type_data)
