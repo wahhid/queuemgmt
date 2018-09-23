@@ -104,7 +104,7 @@ class Queue_display(http.Controller):
     @http.route('/queue/routeui/listactive/<int:display_id>', auth='public')
     def display_list_active(self, display_id):
         queue_pickup_obj = http.request.env['queue.pickup']
-        args = [('display_id', '=', display_id), ('state', '=', 'opened')]
+        args = [('display_id', '=', display_id), ('current_pickup_log_state', '=', 'opened')]
         queue_pickup_ids = queue_pickup_obj.search_read(args)
         pickup_list = []
         for queue_pickup in queue_pickup_ids:
@@ -116,6 +116,7 @@ class Queue_display(http.Controller):
             pickup_data.update({'counter_code': '0001'})
             pickup_list.append(pickup_data)
         return json.dumps(pickup_list)
+
 
 class Queue(http.Controller):
     @http.route('/queue/queue/<int:id>', auth='public')
