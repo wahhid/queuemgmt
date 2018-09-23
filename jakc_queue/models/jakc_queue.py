@@ -190,7 +190,7 @@ class QueueTrans(models.Model):
             if len(queue_trans_ids) > 0:
                 trans_id = str(len(queue_trans_ids) + 1).zfill(3)
             else:
-                trans_id = str(len(1)).zfill(3)
+                trans_id = str(1).zfill(3)
         values.update({'trans_id': trans_id})
         result = super(QueueTrans,self).create(values)
         # trans_data = {}
