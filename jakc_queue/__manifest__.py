@@ -23,6 +23,7 @@
         'views/templates.xml',
         'views/routing_screen_templates.xml',
         'views/kiosk_screen_templates.xml',
+        'views/pickup_screen_templates.xml',
 
     ],
     # only loaded in demonstration mode
