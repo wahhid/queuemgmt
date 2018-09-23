@@ -188,23 +188,11 @@ class Queue_app(http.Controller):
     @http.route('/queue/app/<int:type_id>/', auth='public')
     def app(self, type_id):
         try:
-            env_type = http.request.env['queue.type']
-            types = env_type.sudo().search([('id','=',type_id)])
-            type = types[0]
-            number =  type.number + 1
+            queue_type_obj = http.request.env['queue.type']
+            queue_trans_obj = http.request.env['queue.trans']
             trans_data = {}
-            trans_data.update({'number': number})
-            type.sudo().write(trans_data)
-            env_trans = http.request.env['queue.trans']
-            trans_data = {}        
-            str_number = str(number)
-            if len(str_number) == 1:
-                str_number = '00' + str_number
-            elif len(str_number) == 2 :
-                str_number = '0' + str_number       
-            trans_data.update({'trans_id': str_number})
             trans_data.update({'type_id': type_id})
-            trans = env_trans.sudo().create(trans_data)                
+            trans = queue_trans_obj.create(trans_data)
             return '{"success":true,"message":"Transaction Process Successfully","trans_id":' + str(trans.id) + '}'
         except:
             return '{"success":false,"message":"Error"}'
