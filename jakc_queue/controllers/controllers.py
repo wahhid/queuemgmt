@@ -111,7 +111,7 @@ class Queue_display(http.Controller):
         pickup_log_ids = queue_pickup_log_obj.search_read(pickup_log_args)
         for pickup_log_id in pickup_log_ids:
             pickup_id = queue_pickup_obj.browse(pickup_log_id['pickup_id'][0])
-            if pickup_id['display_id'][0] == display_id:
+            if pickup_id.display_id.id == display_id:
                 pickup_data = {}
                 pickup_data.update({'pickup_name': pickup_id['name']})
                 pickup_data.update({'counter_name': pickup_id['type_id'][1]})
