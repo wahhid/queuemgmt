@@ -43,14 +43,14 @@ class QueuePickup(http.Controller):
     @http.route('/queue/pickup/screen/<int:id>', type='http', auth='user')
     def queue_pickup_screen(self, id):
         # if user not logged in, log him in
-        pickup_logs = http.request.env['queue.pickup.log'].search([
+        pickup_logs = http.request.env['queue.pickup.log'].search_read([
             ('state', '=', 'opened'),
             ('user_id', '=', http.request.session.uid), ], limit=1)
         if len(pickup_logs) == 1:
             pickup_log = pickup_logs[0]
+
             pickup_data = {}
-            pickup_data.update({'pickup_id': pickup_log.id})
-            pickup_data.update({"pickup_code": pickup_log.name})
+            pickup_data.update({'pickup_id': pickup_log.pickup_id.id})
             return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data})
 
     @http.route('/queue/pickup/<int:id>/', auth='public')
