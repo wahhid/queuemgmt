@@ -185,7 +185,7 @@ class QueueTrans(models.Model):
         trans_id = '000'
         if 'type_id' in values.keys():
             trans_args = [
-                ('type_id', '=', values.get('type_id'), ('trans_date', '=', datetime.now().strftime('%Y-%m-%d')))]
+                ('type_id', '=', values.get('type_id')), ('trans_date', '=', datetime.now().strftime('%Y-%m-%d'))]
             queue_trans_ids = queue_type_obj.search(trans_args)
             if len(queue_trans_ids) > 0:
                 trans_id = str(len(queue_trans_ids) + 1).zfill(3)
