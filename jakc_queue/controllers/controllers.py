@@ -109,7 +109,8 @@ class Queue_display(http.Controller):
         pickup_list = []
         for queue_pickup in queue_pickup_ids:
             pickup_data = {}
-            pickup_data.update({'counter_name': 'Customer Service'})
+            pickup_data.update({'pickup_name': '0001'})
+            pikcup_data.update({'counter_name': 'Customer Service'})
             pickup_data.update({'current_trans': '202'})
             pickup_data.update({'counter_bg': 'bg-red'})
             pickup_data.update({'counter_fa': 'fa-users'})

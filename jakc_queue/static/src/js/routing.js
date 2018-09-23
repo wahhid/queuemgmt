@@ -22,8 +22,8 @@
                             '       <div class="widget-user-image">' +
                             '           <span class="info-counter-icon ' + item.counter_bg + '"><i class="fa ' + item.counter_fa + '"></i></span>' +
                             '       </div>' +
-                            '       <h3 class="widget-user-username">' + item.counter_name + '</h3>' +
-                            '       <h5 class="widget-user-desc" id="counter-desc-01">' + item.counter_desc + '</h5>' +
+                            '       <h3 class="widget-user-username">' + item.pikcup_name + '</h3>' +
+                            '       <h5 class="widget-user-desc" id="counter-desc-01">' + item.counter_name + '</h5>' +
                             '   </div>' +
                             '   <div class="box-footer no-padding">' +
                             '       <center>' +
