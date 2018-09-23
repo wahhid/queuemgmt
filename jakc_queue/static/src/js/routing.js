@@ -49,7 +49,7 @@
         })
         .done(function(data){
             $('#queue-grid').empty();
-            $.each( data.data, function( i, item ) {
+            $.each( data, function( i, item ) {
                 var html  = '<div class="col-md-3 col-xs-12">' +
                             '   <div class="small-box ' + item.counter_bg + '">' +
                             '       <div class="inner">' +
