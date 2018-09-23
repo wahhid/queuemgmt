@@ -114,10 +114,10 @@ class Queue_display(http.Controller):
             if pickup_id.display_id['id'] == display_id:
                 pickup_data = {}
                 pickup_data.update({'pickup_name': pickup_id['name']})
-                pickup_data.update({'counter_name': pickup_id['type_id'][1]})
+                pickup_data.update({'counter_name': pickup_id.type_id['name']})
                 pickup_data.update({'current_trans': '202'})
-                type_id = queue_type_obj.browse(pickup_id['type_id'][0])
-                pickup_data.update({'counter_bg': type_id['bg_color']})
+                type_id = queue_type_obj.browse(pickup_id.type_id['id'])
+                pickup_data.update({'counter_bg': type_id.bg_color})
                 pickup_data.update({'counter_fa': 'fa-users'})
                 pickup_data.update({'counter_code': '0001'})
                 pickup_list.append(pickup_data)
