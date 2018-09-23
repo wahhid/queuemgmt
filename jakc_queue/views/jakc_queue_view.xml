@@ -174,7 +174,8 @@
 	                    <group>                            
 				            <field name="trans_id"/>				            
 				            <field name="trans_date"/>
-				            <field name="type_id"/>				 
+                            <field name="type_id"/>
+                            <field name="pickup_id"/>
 				            <field name="display_id"/>
 				            <field name="start_date_time"/>
 				            <field name="pickup_date_time"/>				            
@@ -194,7 +195,8 @@
                 <tree string="Queue Transaction">
 				 	<field name="trans_id"/>				            
 				 	<field name="trans_date"/>
-				 	<field name="type_id"/>				 	
+                    <field name="type_id"/>
+                    <field name="pickup_id"/>
 					<field name="display_id"/>
 				   	<field name="start_date_time"/>
 				   	<field name="pickup_date_time"/>

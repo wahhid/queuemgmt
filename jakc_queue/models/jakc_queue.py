@@ -169,6 +169,7 @@ class QueueTrans(models.Model):
     trans_date = fields.Date('Date', required=True , default=fields.Date.today)
     type_id = fields.Many2one('queue.type', 'Type', index=True)
     display_id = fields.Many2one('queue.display','Display',index=True)
+    pickup_id = fields.Many2one('queue.pickup', 'Pickup', index=True)
     start_date_time = fields.Datetime('Start Time', default=fields.Datetime.now)
     is_pickup = fields.Boolean('Is Pickup', default=False)    
     pickup_date_time = fields.Datetime('Pickup Time')    
