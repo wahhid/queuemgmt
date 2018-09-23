@@ -84,8 +84,8 @@ class Queue_display(http.Controller):
     def displayui(self, display_code):
         return request.render('jakc_queue.index', {'displaycode': display_code})
 
-    @http.route('/queue/routeui/', auth='public')        
-    def routeui(self, **kw):
+    @http.route('/queue/routeui/<routing_code>', auth='public')
+    def routeui(self, routing_code):
         return request.render('jakc_queue.routingscreen', {})
         
     @http.route('/queue/display/<display_code>/', auth='public')
