@@ -103,21 +103,24 @@ class Queue_display(http.Controller):
 
     @http.route('/queue/routeui/listactive/<int:display_id>', auth='public')
     def display_list_active(self, display_id):
+        queue_pickup_log_obj = http.request.env['queue.pickup.log']
         queue_pickup_obj = http.request.env['queue.pickup']
         queue_type_obj = http.request.env['queue.type']
-        args = [('display_id', '=', display_id), ('current_pickup_log_state', '=', 'opened')]
-        queue_pickup_ids = queue_pickup_obj.search_read(args)
+        pickup_log_args = [('state', '=', 'opened')]
         pickup_list = []
-        for queue_pickup in queue_pickup_ids:
-            pickup_data = {}
-            pickup_data.update({'pickup_name': queue_pickup['name']})
-            pickup_data.update({'counter_name': queue_pickup['type_id'][1]})
-            pickup_data.update({'current_trans': '202'})
-            type_id = queue_type_obj.browse(queue_pickup['type_id'][0])
-            pickup_data.update({'counter_bg': type_id['bg_color']})
-            pickup_data.update({'counter_fa': 'fa-users'})
-            pickup_data.update({'counter_code': '0001'})
-            pickup_list.append(pickup_data)
+        pickup_log_ids = queue_pickup_log_obj.search_read(pickup_log_args)
+        for pickup_log_id in pickup_log_ids:
+            pickup_id = queue_pickup_obj.browse(pickup_log_id['pickup_id'][0])
+            if pickup_id['display_id'][0] == display_id:
+                pickup_data = {}
+                pickup_data.update({'pickup_name': pickup_id['name']})
+                pickup_data.update({'counter_name': pickup_id['type_id'][1]})
+                pickup_data.update({'current_trans': '202'})
+                type_id = queue_type_obj.browse(pickup_id['type_id'][0])
+                pickup_data.update({'counter_bg': type_id['bg_color']})
+                pickup_data.update({'counter_fa': 'fa-users'})
+                pickup_data.update({'counter_code': '0001'})
+                pickup_list.append(pickup_data)
         return json.dumps(pickup_list)
 
 
