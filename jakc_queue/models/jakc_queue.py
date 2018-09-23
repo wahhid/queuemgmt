@@ -1,6 +1,10 @@
 from odoo import models, fields, api, _
 from odoo.exceptions import ValidationError, Warning
 from datetime import datetime
+import logging
+
+_logger = logging.getLogger(__name__)
+
 
 AVAILABLE_STATES = [
     ('draft','New'),

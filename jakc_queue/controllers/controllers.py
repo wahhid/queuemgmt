@@ -4,6 +4,10 @@ from odoo.http import request
 from datetime import datetime
 import json
 import werkzeug
+import logging
+
+_logger = logging.getLogger(__name__)
+
 
 
 class QueuePickup(http.Controller):
@@ -48,7 +52,7 @@ class QueuePickup(http.Controller):
             ('user_id', '=', http.request.session.uid), ], limit=1)
         if len(pickup_logs) == 1:
             pickup_log = pickup_logs[0]
-
+            _logger.info(pickup_log)
             pickup_data = {}
             pickup_data.update({'pickup_id': pickup_log.pickup_id.id})
             return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data})
