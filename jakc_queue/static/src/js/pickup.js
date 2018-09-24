@@ -16,10 +16,14 @@ $(document).ready(function () {
         console.log(id);
         $.getJSON('/queue/pickup/' + id + '/', function (data) {
         })
-        .done(function(data){
-            console.log(data);
-            console.log(data.counter_name)
-            $('#counter_name').text(data.counter_name);
+        .done(function(resp){
+            console.log(resp);
+            console.log(resp.counter_name)
+            $('#counter_name').text(resp.counter_name);
+            $('#counter_trans').text(resp.counter_trans);
+            $('.widget-user-header').removeClass().addClass('widget-user-header ' + resp.counter_bg);
+            $('.badge').removeClass().addClass('badge ' + resp.counter_bg);
+
         })
         .fail(function(jqXHR, textStatus, errorThrown){
             console.log('getJSON request failed! ' + textStatus);
