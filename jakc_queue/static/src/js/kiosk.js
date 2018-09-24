@@ -46,10 +46,31 @@ $(document).ready(function () {
                 $('#counter_trans').text(resp.counter_trans);
                 $('.widget-user-header').removeClass().addClass('widget-user-header ' + resp.counter_bg);
                 $('.badge').removeClass().addClass('badge ' + resp.counter_bg);
+                printQueue('353')
             },
             error        : function(xhr, status, error){
                 alert(xhr);
             }
+        });
+    }
+
+    function printQueue(id){
+        $http({
+            url: "report/pdf/jakc_queue.report_queuereceipt/" + id,
+            method: "GET",
+            headers: {
+                "Content-type": "application/pdf"
+            },
+            responseType: "arraybuffer"
+        }).success(function (data, status, headers, config) {
+            var pdfFile = new Blob([data], {
+                type: "application/pdf"
+            });
+            var pdfUrl = URL.createObjectURL(pdfFile);
+            printJS(pdfUrl);
+
+        }).error(function (data, status, headers, config) {
+            alert("Sorry, something went wrong")
         });
     }
 });
