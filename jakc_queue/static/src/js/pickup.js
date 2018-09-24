@@ -18,10 +18,8 @@ $(document).ready(function () {
         })
         .done(function(data){
             console.log(data);
-            json = JSON.stringify(data);
-            console.log(json);
-            console.log(json.counter_name)
-            $('#counter_name').text(json.counter_name);
+            console.log(data.counter_name)
+            $('#counter_name').text(data.counter_name);
         })
         .fail(function(jqXHR, textStatus, errorThrown){
             console.log('getJSON request failed! ' + textStatus);
