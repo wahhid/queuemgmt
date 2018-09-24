@@ -159,7 +159,7 @@ class Queue_display(http.Controller):
         return json.dumps(trans_list)
 
     @http.route('/queue/routeui/checksound/', auth='public')
-    def display_list_new(self, **kw):
+    def checksound(self, **kw):
         queue_trans_obj = http.request.env['queue.trans']
         trans_args = [('iface_recall', '=', True), ('state', '=', 'open')]
         trans_ids = queue_trans_obj.search(trans_args, order='recall_date_time', limit=1)
