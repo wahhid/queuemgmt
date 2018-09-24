@@ -87,6 +87,9 @@
                                     <div class="box">
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Current</h3>
+                                            <h4 class="type-id">
+                                                <t t-esc="pickup['pickup_id']"/>
+                                            </h4>
                                         </div>
                                         <div class="box-body">
                                             <div class="box box-widget widget-user">
@@ -113,28 +116,32 @@
                                     <!-- /.box -->
                                     <div class="row">
                                         <div class="col-md-3 col-xs-12">
-                                            <button type="button" code="pickup" class="btn btn-danger btn-lg btn3d">
+                                            <button type="button" code="pickup" class="btn btn-danger btn-lg btn3d"
+                                                    id="btnpickup">
                                                 <span
                                                         class="fa fa-play"></span>
                                                 Pickup
                                             </button>
                                         </div>
                                         <div class="col-md-3 col-xs-12">
-                                            <button type="button" code="recall" class="btn btn-danger btn-lg btn3d">
+                                            <button type="button" code="recall" class="btn btn-danger btn-lg btn3d"
+                                                    id="btnrecall">
                                                 <span
                                                         class="fa fa-bullhorn"></span>
                                                 Re-call
                                             </button>
                                         </div>
                                         <div class="col-md-3 col-xs-12">
-                                            <button type="button" code="skip" class="btn btn-danger btn-lg btn3d">
+                                            <button type="button" code="skip" class="btn btn-danger btn-lg btn3d"
+                                                    id="btnskip">
                                                 <span
                                                         class="fa fa-stop"></span>
                                                 Skip
                                             </button>
                                         </div>
                                         <div class="col-md-3 col-xs-12">
-                                            <button type="button" code="finish" class="btn btn-danger btn-lg btn3d">
+                                            <button type="button" code="finish" class="btn btn-danger btn-lg btn3d"
+                                                    id="btnfinish">
                                                 <span
                                                         class="fa fa-stop"></span>
                                                 Finish
