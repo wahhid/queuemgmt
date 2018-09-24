@@ -4,38 +4,18 @@
         <template id="report_queuereceipt_document">
             <div class="page">
                 <div class="text-center">
-                    <h2>Parking Receipt</h2>
+                    <h2>Queue Receipt</h2>
+                </div>
+                <div class="text-center">
+                    <h2>Telkom Indonesia</h2>
                 </div>
                 <br/>
-                <div class="row">
-                    <div class="col-xs-4">
-                        <span>Trans #</span>
-                    </div>
-                    <div class="col-xs-8">
-                        <span t-esc="o.trans_id"/>
-                    </div>
+                <div class="text-center">
+                    <h2>
+                        <t t-esc="o.trans_id"/>
+                    </h2>
                 </div>
-                <div class="row">
-                    <div class="col-xs-4">
-                        <span>Plat Number</span>
-                    </div>
-                    <div class="col-xs-8">
-                        <span t-esc="o.plat_number"/>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-4">
-                        <span>Entry Date</span>
-                    </div>
-                    <div class="col-xs-8">
-                        <span t-esc="o.entry_datetime"/>
-                    </div>
-                </div>
-                <br/>
-                <br/>
-                <div class="row">
-                    <img t-att-src="'/report/barcode/Code128/%s' % barcode" width="200"/>
-                </div>
+
             </div>
         </template>
 
