@@ -6,7 +6,7 @@ $(document).ready(function () {
        //console.log('click');
        //alert($(this).attr('code'));
        if($(this).attr('code') === 'pickup'){
-            pickup_id = $('.pickup-id').text();
+            pickup_id = $('.pickup-id').text().trim();
             pickupQueue(pickup_id)
        }
     });
