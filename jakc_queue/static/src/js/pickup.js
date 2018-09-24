@@ -17,6 +17,7 @@ $(document).ready(function () {
         $.getJSON('/queue/pickup/' + id + '/', function (data) {
         })
         .done(function(data){
+            console.log(data);
             json = JSON.stringify(data);
             console.log(json);
             console.log(json.counter_name)
