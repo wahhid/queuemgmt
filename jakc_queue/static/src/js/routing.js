@@ -5,6 +5,8 @@
     setInterval(loadCounter, 1000);
     //Loading Queuing
     setInterval(loadQueue, 1000);
+    //Loading Sound
+    setInterval(loadSound, 1000);
 
     function loadCounter(){
         //$.getJSON('static/src/json/counter.json', function (data) {
@@ -43,7 +45,7 @@
         });
     }
 
-     function loadQueue(){
+    function loadQueue(){
         //$.getJSON('static/src/json/queue.json', function (data) {
         $.getJSON('/queue/routeui/listnew', function (data) {
         })
@@ -76,4 +78,17 @@
         });
     }
 
+    function loadSound(){
+        console.log("Check Sound")
+        //$.getJSON('static/src/json/counter.json', function (data) {
+        $.getJSON('/queue/routeui/checksound/', function (data) {
+
+        })
+        .done(function(data){
+
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+            console.log('getJSON request failed! ' + textStatus);
+        });
+    }
   });
