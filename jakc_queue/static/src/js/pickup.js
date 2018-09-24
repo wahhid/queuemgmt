@@ -18,6 +18,7 @@ $(document).ready(function () {
         })
         .done(function(data){
             json = JSON.stringify(data);
+            console.log(json);
             console.log(json.counter_name)
             $('#counter_name').text(json.counter_name);
         })
