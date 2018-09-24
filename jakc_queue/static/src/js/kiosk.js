@@ -78,10 +78,11 @@ $(document).ready(function () {
     function openWin(id)
     {
         console.log('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString())
-        pdfWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString(),'','width=300,height=200');
+        pdfWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString(),'','width=10,height=10');
         pdfWindow.onload = function(){
             pdfWindow.focus();
             pdfWindow.print();
+            myWindow.close();
         }
         //myWindow.document.write("<p>This is 'myWindow'</p>");
         //myWindow.document.close(); //missing code
