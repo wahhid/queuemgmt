@@ -84,7 +84,7 @@
                                         <!-- Counter Grid -->
                                         <t t-foreach="types" t-as="type">
                                             <button type="button" t-att-code='type.id'
-                                                    t-attr-class='type.bg_color'
+                                                    t-attr-class='type.mod_bg_color'
                                                     style="font-size:58px;">
                                             <span class="info-box-icon">
                                                 <i class="fa fa-users"></i>
