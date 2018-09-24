@@ -15,6 +15,11 @@ $(document).ready(function () {
        }
     });
 
+    function loadCurrentQueue(){
+        pickup_id = $('.pickup-id').text().trim();
+
+    }
+
     function pickupQueue(id){
         console.log("pickup");
         console.log(id);
