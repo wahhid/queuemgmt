@@ -82,8 +82,8 @@ $(document).ready(function () {
         //myWindow.document.write("<p>This is 'myWindow'</p>");
         //myWindow.document.close(); //missing code
         myWindow.focus();
-        myWindow.print();
-        myWindow.close();
+        //myWindow.print();
+        //myWindow.close();
     }
 });
 
