@@ -9,7 +9,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 
-
 class QueuePickup(http.Controller):
 
     @http.route('/queue/pickup/listall', auth='public')
@@ -82,16 +81,16 @@ class QueuePickup(http.Controller):
 
 class Queue_display(http.Controller):
     
-    @http.route('/queue/displayui/<display_code>/', auth='public')        
-    def displayui(self, display_code):
+    @http.route('/queue/displayui/<display_code>/', auth='public')
+    def displayui(self, display_code, **kw):
         return request.render('jakc_queue.index', {'displaycode': display_code})
 
     @http.route('/queue/routeui/<routing_code>', auth='public')
-    def routeui(self, routing_code):
+    def routeui(self, routing_code, **kw):
         return request.render('jakc_queue.routingscreen', {})
         
     @http.route('/queue/display/<display_code>/', auth='public')
-    def display(self, display_code):
+    def display(self, display_code, **kw):
         env_display = http.request.env['queue.display']
         displays = env_display.sudo().search([('name','=',display_code)])
         display = displays[0]
@@ -104,7 +103,7 @@ class Queue_display(http.Controller):
             return '{"success":false,"message":""}'
 
     @http.route('/queue/routeui/listactive/<int:display_id>', auth='public')
-    def display_list_active(self, display_id):
+    def display_list_active(self, display_id, **kw):
         queue_pickup_log_obj = http.request.env['queue.pickup.log']
         queue_pickup_obj = http.request.env['queue.pickup']
         queue_type_obj = http.request.env['queue.type']
@@ -126,7 +125,7 @@ class Queue_display(http.Controller):
         return json.dumps(pickup_list)
 
     @http.route('/queue/routeui/listnew/', auth='public')
-    def display_list_new(self):
+    def display_list_new(self, **kw):
         queue_type_obj = http.request.env['queue.type']
         queue_trans_obj = http.request.env['queue.trans']
         trans_args = [('state', '=', 'draft')]
@@ -146,7 +145,7 @@ class Queue_display(http.Controller):
 
 class Queue(http.Controller):
     @http.route('/queue/queue/<int:id>', auth='public')
-    def index(self, id):
+    def index(self, id, **kw):
         Types = http.request.env['queue.type']
         return http.request.render('jakc_queue.index', {
             'types': Types.search([('id','=', id)])
@@ -185,7 +184,7 @@ class Queue_app(http.Controller):
         return http.request.render('jakc_queue.appui', {'types':types})
 
     @http.route('/queue/kiosk/request/<int:type_id>/', auth='public', csrf=False)
-    def app(self, type_id):
+    def app(self, type_id, **kw):
         try:
             queue_type_obj = http.request.env['queue.type']
             queue_trans_obj = http.request.env['queue.trans']
@@ -201,7 +200,14 @@ class Queue_app(http.Controller):
             return json.dumps(trans_data)
         except:
             return '{"success":false,"message":"Error"}'
-        
+
+    @http.route('/pos/appprint/receipt/<int:id>', type='http', auth='user')
+    def print_sale_details(self, id, **kw):
+        r = request.env['report.point_of_sale.report_saledetails']
+        pdf = request.env['report'].with_context(id=id).get_pdf(r, 'point_of_sale.report_saledetails')
+        pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
+        return request.make_response(pdf, headers=pdfhttpheaders)
+
     @http.route('/queue/appprint/', auth='public')
     def appprint(self, **kw):
         env_trans_print = http.request.env['queue.trans.print']

@@ -24,6 +24,8 @@
         'views/routing_screen_templates.xml',
         'views/kiosk_screen_templates.xml',
         'views/pickup_screen_templates.xml',
+        'views/jakc_queue_report.xml',
+        'report/report_queue_receipt_view.xml',
 
     ],
     # only loaded in demonstration mode
