@@ -114,16 +114,22 @@ class Queue_display(http.Controller):
         queue_pickup_log_obj = http.request.env['queue.pickup.log']
         queue_pickup_obj = http.request.env['queue.pickup']
         queue_type_obj = http.request.env['queue.type']
+        queue_trans_obj = http.request.env['queue.trans']
         pickup_log_args = [('state', '=', 'opened')]
         pickup_list = []
-        pickup_log_ids = queue_pickup_log_obj.search_read(pickup_log_args)
+        pickup_log_ids = queue_pickup_log_obj.search(pickup_log_args)
         for pickup_log_id in pickup_log_ids:
-            pickup_id = queue_pickup_obj.browse(pickup_log_id['pickup_id'][0])
-            if pickup_id.display_id['id'] == display_id:
+            pickup_id = queue_pickup_obj.browse(pickup_log_id.pickup_id.id)
+            if pickup_id.display_id.id == display_id:
                 pickup_data = {}
-                pickup_data.update({'pickup_name': pickup_id['name']})
-                pickup_data.update({'counter_name': pickup_id.type_id['name']})
-                pickup_data.update({'current_trans': '202'})
+                pickup_data.update({'pickup_name': pickup_id.name})
+                pickup_data.update({'counter_name': pickup_id.type_id.name})
+                queue_trans_args = [('pickup_id', '=', pickup_id.id), ('state', '=', 'open')]
+                queue_trans = queue_trans_obj.search(queue_trans_args, limit=1)
+                if queue_trans:
+                    pickup_data.update({'current_trans': queue_trans.trans_id})
+                else:
+                    pickup_data.update({'current_trans': '---'})
                 type_id = queue_type_obj.browse(pickup_id.type_id['id'])
                 pickup_data.update({'counter_bg': type_id.bg_color})
                 pickup_data.update({'counter_fa': 'fa-users'})
