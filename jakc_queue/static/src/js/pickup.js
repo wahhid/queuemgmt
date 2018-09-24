@@ -3,6 +3,7 @@ $(document).ready(function () {
     $('.sidebar-menu').tree();
 
     $('.btnpickup').click(function(e){
+        console.log("pickup");
         pickup_id = $('.pickup-id').text();
         $.getJSON('/queue/pickup/' + pickup_id + '/', function (data) {
         })
