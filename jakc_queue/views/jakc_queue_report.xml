@@ -1,5 +1,4 @@
 <odoo>
-    <data>
         <report id="queue_receipt"
                 string="Queue Receipt"
                 model="queue.trans"
@@ -28,5 +27,4 @@
         <record id="jakc_queue.queue_receipt" model="ir.actions.report.xml">
             <field name="paperformat_id" ref="jakc_queue.paperformat_queue_receipt"/>
         </record>
-    </data>
 </odoo>
