@@ -103,10 +103,10 @@
                                                          src="/jakc_queue/static/src/img/no-image.jpg"/>
                                                 </div>
                                                 <div class="box-footer">
+                                                    <input type="hidden" id="trans_id" value=""/>
                                                     <center>
                                                         <span class="badge" style="margin:20px;font-size:148px;"
                                                               id="counter_trans">
-
                                                         </span>
                                                     </center>
                                                 </div>

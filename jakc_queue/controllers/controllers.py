@@ -66,7 +66,8 @@ class QueuePickup(http.Controller):
             trans_args = [('state', '=', 'draft'), ('type_id', '=', pickup.type_id.id)]
             trans_id = queue_trans_obj.search(trans_args, order='create_date', limit=1)
             if trans_id:
-                trans_id.write({'state': 'open', 'type_id': pickup.type_id.id, 'pickup_id': pickup.id})
+                trans_id.write({'pickup_date_time': datetime.now(), 'state': 'open', 'type_id': pickup.type_id.id,
+                                'pickup_id': pickup.id})
                 trans_data = {}
                 trans_data.update({'id': trans_id.id})
                 trans_data.update({'counter_trans': trans_id.trans_id})
@@ -78,6 +79,12 @@ class QueuePickup(http.Controller):
         else:
             return '{"success":false,"message":"No Queue"}'
 
+    @http.route('/queue/finish/<int:id>/', auth='public')
+    def finish(self, id):
+        queue_trans_obj = http.request.env['queue.trans']
+        trans = queue_trans_obj.browse(id)
+        trans.write({'end_date_time': datetime.now(), 'state': 'done'})
+        return json.dumps({'status': True})
 
 class Queue_display(http.Controller):
     
