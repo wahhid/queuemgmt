@@ -39,7 +39,9 @@
             <field name="model">queue.type</field>						
             <field name="type">form</field>						
             <field name="arch" type="xml">
-                <form string="Queue Type" version="7.0">
+                <form string="Queue Type">
+                    <button name="trans_close" string="Close" type="object" class="oe-highlight" state="open"/>
+                    <button name="trans_reopen" string="Re-Open" type="object" class="oe-highlight" state="done"/>
                 	<sheet>
 	                    <group>                            
 	                        <field name="name"/>

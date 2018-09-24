@@ -58,6 +58,15 @@ class QueueDisplay(models.Model):
 class QueueType(models.Model):
     _name = 'queue.type'
 
+    @api.one
+    def trans_close(self):
+        self.state = 'done'
+
+    @api.one
+    def trans_reopen(self):
+        self.state = 'open'
+
+
     name = fields.Char('Name', size=30, required=True)
     number = fields.Integer('Number', default=0)
     bg_color = fields.Selection(AVAILABLE_BG_COLOR, 'Bg Color', default='bg_black')
@@ -132,7 +141,7 @@ class QueuePickup(models.Model):
         assert len(self.ids) == 1, "you can open only one session at a time"
         return {
             'type': 'ir.actions.act_url',
-            'url': '/queue/pickup/screen/' + str(id),
+            'url': '/queue/pickup/screen/',
             'target': 'self',
         }
 
