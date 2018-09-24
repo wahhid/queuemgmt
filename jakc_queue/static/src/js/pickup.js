@@ -8,7 +8,6 @@ $(document).ready(function () {
        if($(this).attr('code') === 'pickup'){
             pickup_id = $('.pickup-id').text();
             pickupQueue(pickup_id)
-
        }
     });
 

@@ -43,8 +43,8 @@ class QueuePickup(http.Controller):
         pickups = env_pickup.sudo().search([])
         return request.render('jakc_queue.pickupui', {'pickups': pickups})
 
-    @http.route('/queue/pickup/screen/<int:id>', type='http', auth='user')
-    def queue_pickup_screen(self, id):
+    @http.route('/queue/pickup/screen/', type='http', auth='user')
+    def queue_pickup_screen(self, **kwargs):
         # if user not logged in, log him in
         pickup_logs = http.request.env['queue.pickup.log'].search_read([
             ('state', '=', 'opened'),
