@@ -91,18 +91,19 @@
                                         <div class="box-body">
                                             <div class="box box-widget widget-user">
                                                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                                                <div class="widget-user-header bg-red">
-                                                    <h3 class="widget-user-username">Alexander Pierce</h3>
-                                                    <h5 class="widget-user-desc">Founder &amp; CEO</h5>
+                                                <div class="widget-user-header">
+                                                    <h3 class="widget-user-username" id="counter_name">Not Avaiable</h3>
+                                                    <h5 class="widget-user-desc" id="counter_user">Not Available</h5>
                                                 </div>
                                                 <div class="widget-user-image">
-                                                    <img class="img-circle" src="static/src/img/no-image.jpg"
-                                                         alt="User Avatar"/>
+                                                    <img class="img-circle"
+                                                         src="/jakc_queue/static/src/img/no-image.jpg"/>
                                                 </div>
                                                 <div class="box-footer">
                                                     <center>
-                                                        <span class="badge bg-red" style="margin:20px;font-size:148px;">
-                                                            301
+                                                        <span class="badge" style="margin:20px;font-size:148px;"
+                                                              id="counter_trans">
+
                                                         </span>
                                                     </center>
                                                 </div>
