@@ -86,6 +86,9 @@
         })
         .done(function(data){
             console.log(data);
+             var audio = new Audio('/jakc_queue/static/src/snd/1.MP3');
+             audio.loop = false;
+             audio.play();
         })
         .fail(function(jqXHR, textStatus, errorThrown){
             console.log('getJSON request failed! ' + textStatus);
