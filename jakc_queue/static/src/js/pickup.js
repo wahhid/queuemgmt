@@ -2,7 +2,17 @@ $(document).ready(function () {
 
     $('.sidebar-menu').tree();
 
-    $('.btnpickup').click(function(e){
+    $('button').on('click', function (e){
+       //console.log('click');
+       //alert($(this).attr('code'));
+       if($(this).attr('code') === 'pickup'){
+            pickup_id = $('.pickup-id').text();
+            pickupQueue(pickup_id)
+
+       }
+    });
+
+    function pickupQueue(id){
         console.log("pickup");
         pickup_id = $('.pickup-id').text();
         $.getJSON('/queue/pickup/' + pickup_id + '/', function (data) {
@@ -15,9 +25,6 @@ $(document).ready(function () {
         .fail(function(jqXHR, textStatus, errorThrown){
             console.log('getJSON request failed! ' + textStatus);
         });
-    });
+    }
 
-    $('.btnfinish').click(function(e){
-
-    });
 });
