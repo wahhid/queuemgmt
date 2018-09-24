@@ -10,6 +10,12 @@
                     <h2>Telkom Indonesia</h2>
                 </div>
                 <br/>
+                <
+                <div class="text-center">
+                    <h2>
+                        <t t-esc="o.trans_id"/>
+                    </h2>
+                </div>
             </div>
         </template>
 
