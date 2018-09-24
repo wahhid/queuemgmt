@@ -35,8 +35,8 @@ $(document).ready(function () {
         });
     }
 
-     function pickupQueue(id){
-        console.log("pickup");
+     function finishQueue(id){
+        console.log("Finish");
         console.log(id);
         $.getJSON('/queue/finish/' + id + '/', function (data) {
         })
