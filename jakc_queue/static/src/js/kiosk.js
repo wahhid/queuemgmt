@@ -46,7 +46,7 @@ $(document).ready(function () {
                 $('#counter_trans').text(resp.counter_trans);
                 $('.widget-user-header').removeClass().addClass('widget-user-header ' + resp.counter_bg);
                 $('.badge').removeClass().addClass('badge ' + resp.counter_bg);
-                openWin('353')
+                openWin(resp.trans_id)
             },
             error        : function(xhr, status, error){
                 alert(xhr);
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
     function printQueue(id){
         $http({
-            url: "report/pdf/jakc_queue.report_queuereceipt/" + id,
+            url: "report/pdf/jakc_queue.report_queuereceipt/" + str(id),
             method: "GET",
             headers: {
                 "Content-type": "application/pdf"
@@ -81,6 +81,7 @@ $(document).ready(function () {
         //myWindow.document.close(); //missing code
         myWindow.focus();
         myWindow.print();
+        myWindow.close();
     }
 });
 

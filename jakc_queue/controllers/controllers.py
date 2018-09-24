@@ -192,7 +192,7 @@ class Queue_app(http.Controller):
             trans_data.update({'type_id': type_id})
             trans = queue_trans_obj.create(trans_data)
             trans_data = {}
-            trans_data.update({'trans_id': trans.trans_id})
+            trans_data.update({'trans_id': trans.id})
             trans_data.update({'type_id': trans.type_id.id})
             trans_data.update({'counter_name': trans.type_id.name})
             trans_data.update({'counter_trans': trans.trans_id})
