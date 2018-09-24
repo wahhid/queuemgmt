@@ -65,6 +65,9 @@
                             '   </div>' +
                             '</div>';
                  $('#queue-grid').append(html);
+                  if (i == 7){
+                    return false;
+                }
             });
 
         })
