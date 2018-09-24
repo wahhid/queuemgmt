@@ -13,8 +13,8 @@ $(document).ready(function () {
 
     function pickupQueue(id){
         console.log("pickup");
-        pickup_id = $('.pickup-id').text();
-        $.getJSON('/queue/pickup/' + pickup_id + '/', function (data) {
+        console.log(id);
+        $.getJSON('/queue/pickup/' + id + '/', function (data) {
         })
         .done(function(data){
             json = JSON.stringify(data);
