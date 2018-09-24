@@ -21,7 +21,7 @@
 
         <template id="report_queuereceipt">
             <t t-foreach="docs" t-as="o">
-                <t t-call="jakc_parking.report_queuereceipt_document"/>
+                <t t-call="jakc_queue.report_queuereceipt_document"/>
             </t>
         </template>
     </data>
