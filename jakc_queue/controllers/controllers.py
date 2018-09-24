@@ -164,7 +164,7 @@ class Queue_display(http.Controller):
         trans_args = [('iface_recall', '=', True), ('state', '=', 'open')]
         trans_ids = queue_trans_obj.search(trans_args, order='recall_date_time', limit=1)
         if len(trans_ids) == 1:
-            trans = queue_trans_obj.browse(trans_ids[0])
+            trans = trans_ids[0]
             trans.iface_recall = False
             return json.dumps(trans)
         else:
