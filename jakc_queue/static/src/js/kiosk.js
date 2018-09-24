@@ -76,9 +76,9 @@ $(document).ready(function () {
 
     function openWin(id)
     {
-        myWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id,'','width=200,height=100');
-        myWindow.document.write("<p>This is 'myWindow'</p>");
-        myWindow.document.close(); //missing code
+        myWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id,'','width=300,height=200');
+        //myWindow.document.write("<p>This is 'myWindow'</p>");
+        //myWindow.document.close(); //missing code
         myWindow.focus();
         myWindow.print();
     }
