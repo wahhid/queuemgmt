@@ -13,7 +13,7 @@
     # for the full list
     'category': 'Queue',
     # any module necessary for this one to work correctly
-    'depends': ['base', 'website'],
+    'depends': ['base', 'website', 'report'],
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
