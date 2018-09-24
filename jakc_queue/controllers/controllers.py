@@ -163,14 +163,11 @@ class Queue_display(http.Controller):
         queue_trans_obj = http.request.env['queue.trans']
         trans_args = [('iface_recall', '=', True), ('state', '=', 'open')]
         trans_ids = queue_trans_obj.search(trans_args, order='recall_date_time', limit=1)
-        _logger.info(trans_ids)
-        if len(trans_ids) == 1:
-            trans = queue_trans_obj.browse(trans_ids[0])
-            trans.iface_recall = False
-            return json.dumps(trans)
-        else:
-            return json.dumps({})
-
+        trans = {}
+        for trans_id in trans_ids:
+            trans_id.iface_recall = False
+            trans = trans_id
+        return json.dumps(trans)
 
 class Queue(http.Controller):
     @http.route('/queue/queue/<int:id>', auth='public')
