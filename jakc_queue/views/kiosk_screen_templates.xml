@@ -90,8 +90,8 @@
                                                     t-att-class='type.mod_bg_color'
                                                     style="font-size:58px;">
                                                 <span class="info-counter-icon">
-                                                <i class="fa fa-users"></i>
-                                            </span>
+                                                    <i class="fa fa-users"></i>
+                                                </span>
                                                 <t t-esc="type.name"/>
                                             </button>
                                         </t>
