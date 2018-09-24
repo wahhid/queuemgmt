@@ -89,7 +89,7 @@
                                             <button type="button" t-att-code='type.id'
                                                     t-att-class='type.mod_bg_color'
                                                     style="font-size:58px;">
-                                            <span class="info-box-icon">
+                                                <span class="info-counter-icon">
                                                 <i class="fa fa-users"></i>
                                             </span>
                                                 <t t-esc="type.name"/>
