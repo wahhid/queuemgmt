@@ -193,7 +193,7 @@ class Queue_app(http.Controller):
             trans_data = {}
             trans_data.update({'type_id': type_id})
             trans = queue_trans_obj.create(trans_data)
-            return '{"success":true,"message":"Transaction Process Successfully","trans_id":' + str(trans.id) + '}'
+            return json.dumps(trans)
         except:
             return '{"success":false,"message":"Error"}'
         
