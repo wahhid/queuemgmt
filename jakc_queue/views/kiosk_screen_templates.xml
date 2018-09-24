@@ -82,34 +82,16 @@
                                 <div class="row">
                                     <div class="col-md-6 col-xs-12" id="counter-grid">
                                         <!-- Counter Grid -->
-                                        <button type="button" code="0001" class="btn3d btn btn-danger btn-lg btn-block"
+                                        <t t-foreach="types" t-as="type">
+                                            <button type="button" code="<t t-esc='type.counter_id'/>"
+                                                    class="btn3d btn btn-danger btn-lg btn-block"
                                                 style="font-size:58px;">
                                             <span class="info-box-icon">
                                                 <i class="fa fa-users"></i>
                                             </span>
-                                            Customer Service
-                                        </button>
-                                        <button type="button" code="0002" class="btn3d btn btn-danger btn-lg btn-block"
-                                                style="font-size:58px;">
-                                            <span class="info-box-icon">
-                                                <i class="fa fa-users"></i>
-                                            </span>
-                                            Not Available
-                                        </button>
-                                        <button type="button" code="0003" class="btn3d btn btn-danger btn-lg btn-block"
-                                                style="font-size:58px;">
-                                            <span class="info-box-icon">
-                                                <i class="fa fa-users"></i>
-                                            </span>
-                                            Not Available
-                                        </button>
-                                        <button type="button" code="0004" class="btn3d btn btn-danger btn-lg btn-block"
-                                                style="font-size:58px;">
-                                            <span class="info-box-icon">
-                                                <i class="fa fa-users"></i>
-                                            </span>
-                                            Not Available
-                                        </button>
+                                                <t t-esc="type.counter_name"/>
+                                            </button>
+                                        </t>
                                     </div>
                                     <div class="col-md-6 col-xs-12">
                                         <div class="box box-widget widget-user">

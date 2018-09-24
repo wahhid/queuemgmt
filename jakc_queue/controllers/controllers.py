@@ -158,7 +158,7 @@ class Queue_type(http.Controller):
     @http.route('/queue/type/listall', auth='public')
     def category_list(self, **kw):
         queue_type = http.request.env['queue.type']
-        type_ids = queue_type.search_read([])
+        type_ids = queue_type.search([])
         types = []
         for type in type_ids:
             type_data = {}
@@ -215,4 +215,14 @@ class Queue_app(http.Controller):
 
     @http.route('/queue/kiosk', auth='public')
     def queue_kiosk(self, **kw):
-        return request.render('jakc_queue.kioskscreen', {})
+        queue_type = http.request.env['queue.type']
+        type_ids = queue_type.search([])
+        types = []
+        for type in type_ids:
+            type_data = {}
+            type_data.update({'counter_id': type.id})
+            type_data.update({'counter_name': type.name})
+            type_data.update({'counter_bg': type.bg_color})
+            type_data.update({'counter_fa': 'fa-users'})
+            types.append(type_data)
+        return request.render('jakc_queue.kioskscreen', {'types': type_data})
