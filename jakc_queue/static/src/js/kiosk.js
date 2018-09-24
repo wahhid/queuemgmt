@@ -82,7 +82,7 @@ $(document).ready(function () {
         pdfWindow.onload = function(){
             pdfWindow.focus();
             pdfWindow.print();
-            setTimeout(pdfWindow.close(), 10000);
+            pdfWindow.close();
         }
         //myWindow.document.write("<p>This is 'myWindow'</p>");
         //myWindow.document.close(); //missing code
