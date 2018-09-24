@@ -70,7 +70,7 @@ class QueuePickup(http.Controller):
                                 'state': 'open',
                                 'type_id': pickup.type_id.id,
                                 'iface_recall': True,
-                                'sound_date_time': datetime.now(),
+                                'recall_date_time': datetime.now(),
                                 'pickup_id': pickup.id})
                 trans_data = {}
                 trans_data.update({'id': trans_id.id})
