@@ -77,6 +77,7 @@ $(document).ready(function () {
 
     function openWin(id)
     {
+        console.log('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString())
         myWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString(),'','width=300,height=200');
         //myWindow.document.write("<p>This is 'myWindow'</p>");
         //myWindow.document.close(); //missing code
