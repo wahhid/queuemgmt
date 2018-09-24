@@ -35,7 +35,7 @@ $(document).ready(function () {
     function createQueue(code){
          console.log( "Create Queue");
          $.ajax({
-            url         : "/queue/app/" + code + "/",
+            url         : "/queue/kiosk/request/" + code + "/",
             type        : "POST",
             data        : {
             },
