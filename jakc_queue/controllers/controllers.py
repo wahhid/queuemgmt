@@ -163,6 +163,7 @@ class Queue_display(http.Controller):
         queue_trans_obj = http.request.env['queue.trans']
         trans_args = [('iface_recall', '=', True), ('state', '=', 'open')]
         trans_ids = queue_trans_obj.search(trans_args, order='recall_date_time', limit=1)
+        _logger.info(trans_ids)
         trans = {}
         for trans_id in trans_ids:
             trans_id.iface_recall = False
