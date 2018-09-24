@@ -220,5 +220,5 @@ class Queue_app(http.Controller):
         queue_type = http.request.env['queue.type']
         type_ids = queue_type.search([])
         for type in type_ids:
-            type.bg_color = 'btn3d btn ' + type.bg_color + ' btn-lg btn-block'
+            type.mod_bg_color = 'btn3d btn ' + type.bg_color + ' btn-lg btn-block'
         return request.render('jakc_queue.kioskscreen', {'types': type_ids})
