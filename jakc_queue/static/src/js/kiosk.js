@@ -56,7 +56,7 @@ $(document).ready(function () {
 
     function printQueue(id){
         $http({
-            url: "report/pdf/jakc_queue.report_queuereceipt/" + id.toString(),
+            url: "/report/pdf/jakc_queue.report_queuereceipt/" + id.toString(),
             method: "GET",
             headers: {
                 "Content-type": "application/pdf"
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     function openWin(id)
     {
-        myWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id,'','width=300,height=200');
+        myWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString(),'','width=300,height=200');
         //myWindow.document.write("<p>This is 'myWindow'</p>");
         //myWindow.document.close(); //missing code
         myWindow.focus();
