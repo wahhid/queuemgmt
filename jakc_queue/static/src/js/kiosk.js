@@ -56,7 +56,7 @@ $(document).ready(function () {
 
     function printQueue(id){
         $http({
-            url: "report/pdf/jakc_queue.report_queuereceipt/" + str(id),
+            url: "report/pdf/jakc_queue.report_queuereceipt/" + id.toString(),
             method: "GET",
             headers: {
                 "Content-type": "application/pdf"
