@@ -184,8 +184,8 @@ class QueueTrans(models.Model):
     is_pickup = fields.Boolean('Is Pickup', default=False)    
     pickup_date_time = fields.Datetime('Pickup Time')    
     end_date_time = fields.Datetime('End Time')
-    iface_recall = fields.Boolean('Re-call', default=True)
-    recall_date_time = fields.Boolean('Re-call Time', default=datetime.now())
+    iface_recall = fields.Boolean('Re-call', default=False)
+    recall_date_time = fields.Boolean('Re-call Time')
     printed = fields.Boolean('Printed',default=False)    
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16, readonly=True , default='draft')
 

@@ -66,7 +66,11 @@ class QueuePickup(http.Controller):
             trans_args = [('state', '=', 'draft'), ('type_id', '=', pickup.type_id.id)]
             trans_id = queue_trans_obj.search(trans_args, order='create_date', limit=1)
             if trans_id:
-                trans_id.write({'pickup_date_time': datetime.now(), 'state': 'open', 'type_id': pickup.type_id.id,
+                trans_id.write({'pickup_date_time': datetime.now(),
+                                'state': 'open',
+                                'type_id': pickup.type_id.id,
+                                'iface_recall': True,
+                                'sound_date_time': datetime.now(),
                                 'pickup_id': pickup.id})
                 trans_data = {}
                 trans_data.update({'id': trans_id.id})

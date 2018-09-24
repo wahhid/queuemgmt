@@ -85,7 +85,7 @@
 
         })
         .done(function(data){
-
+            console.log(data);
         })
         .fail(function(jqXHR, textStatus, errorThrown){
             console.log('getJSON request failed! ' + textStatus);
