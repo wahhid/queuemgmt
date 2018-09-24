@@ -78,10 +78,14 @@ $(document).ready(function () {
     function openWin(id)
     {
         console.log('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString())
-        myWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString(),'','width=300,height=200');
+        pdfWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString(),'','width=300,height=200');
+        pdfWindow.onload = function(){
+            pdfWindow.focus();
+            pdfWindow.print();
+        }
         //myWindow.document.write("<p>This is 'myWindow'</p>");
         //myWindow.document.close(); //missing code
-        myWindow.focus();
+        //myWindow.focus();
         //myWindow.print();
         //myWindow.close();
     }
