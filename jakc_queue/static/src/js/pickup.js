@@ -10,7 +10,7 @@ $(document).ready(function () {
             pickupQueue(pickup_id)
        }
        if($(this).attr('code') === 'finish'){
-            trans_id = $('.trans-id').val();
+            trans_id = $('#trans_id').val();
             finishQueue(trans_id)
        }
     });
