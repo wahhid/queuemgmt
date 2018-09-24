@@ -87,7 +87,7 @@
                                     <div class="box">
                                         <div class="box-header with-border">
                                             <h3 class="box-title">Current</h3>
-                                            <h4 class="type-id">
+                                            <h4 class="pickup-id">
                                                 <t t-esc="pickup['pickup_id']"/>
                                             </h4>
                                         </div>

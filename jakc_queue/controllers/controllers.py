@@ -69,9 +69,9 @@ class QueuePickup(http.Controller):
                 trans_id.write({'state': 'open', 'type_id': pickup.type_id.id, 'pickup_id': pickup.id})
                 trans_data = {}
                 trans_data.update({'id': trans_id.id})
-                trans_data.update({'trans_id': trans_id.trans_id})
-                trans_data.update({'type_id': trans_id.type_id.id})
-                trans_data.update({'type_name': trans_id.type_id.name})
+                trans_data.update({'counter_trans': trans_id.trans_id})
+                trans_data.update({'counter_name': trans_id.type_id.name})
+                trans_data.update({'counter_bg': trans_id.type_id.bg_color})
                 return json.dumps(trans_data)
             else:
                 return '{"success":false,"message":"No Queue"}'
