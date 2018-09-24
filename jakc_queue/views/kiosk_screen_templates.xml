@@ -83,13 +83,13 @@
                                     <div class="col-md-6 col-xs-12" id="counter-grid">
                                         <!-- Counter Grid -->
                                         <t t-foreach="types" t-as="type">
-                                            <button type="button" t-att-code='type.counter_id'
+                                            <button type="button" t-att-code='type.id'
                                                     class="btn3d btn btn-danger btn-lg btn-block"
                                                     style="font-size:58px;">
                                             <span class="info-box-icon">
                                                 <i class="fa fa-users"></i>
                                             </span>
-                                                <t t-esc="type.counter_name"/>
+                                                <t t-esc="type.name"/>
                                             </button>
                                         </t>
                                     </div>
