@@ -108,7 +108,7 @@
                                             <div class="box-footer">
                                                 <div class="row">
                                                     <center>
-                                                        <span class="badge bg-red" style="margin:20px;font-size:148px;"
+                                                        <span class="badge" style="margin:20px;font-size:148px;"
                                                               id="counter_trans">
                                                             000
                                                         </span>

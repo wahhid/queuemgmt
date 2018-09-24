@@ -195,7 +195,9 @@ class Queue_app(http.Controller):
             trans_data = {}
             trans_data.update({'trans_id': trans.trans_id})
             trans_data.update({'type_id': trans.type_id.id})
-            trans_data.update({'type_name': trans.type_id.name})
+            trans_data.update({'counter_name': trans.type_id.name})
+            trans_data.update({'counter_trans': trans.name})
+            trans_data.update({'counter_bg': trans.type_id.bg_color})
             return json.dumps(trans_data)
         except:
             return '{"success":false,"message":"Error"}'

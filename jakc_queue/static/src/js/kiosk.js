@@ -42,6 +42,8 @@ $(document).ready(function () {
             dataType    : "json",
             success     : function(resp) {
                 console.log(resp);
+                $('#counter_name').text(resp.counter_name);
+                $('#counter_trans').text(resp.counter_trans);
             },
             error        : function(xhr, status, error){
                 alert(xhr);
