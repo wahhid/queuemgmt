@@ -382,11 +382,10 @@
                     <!-- AdminLTE for demo purposes -->
                     <script src="/jakc_queue/static/src/js/demo.js"></script>
                     <!-- AdminLTE for demo purposes -->
-                    <script src="/jakc_queue/static/src/js/pikcup.js"></script>
+                    <script src="/jakc_queue/static/src/js/pickup.js"></script>
 
                 </body>
             </html>
-
         </template>
     </data>
 </odoo>
