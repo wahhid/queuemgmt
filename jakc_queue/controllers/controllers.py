@@ -56,7 +56,7 @@ class QueuePickup(http.Controller):
             pickup_data.update({'pickup_id': pickup_log.pickup_id.id})
             return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data})
 
-    @http.route('queue/pickup/current', type='http', auth='user')
+    @http.route('/queue/pickup/current', type='http', auth='user')
     def queue_pickup_current(self, **kwargs):
         queue_pickup_obj = http.request.env['queue.pickup']
         queue_pickup_log_obj = http.request.env['queue.pickup.log']
