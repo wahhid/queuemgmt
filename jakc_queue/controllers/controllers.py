@@ -264,18 +264,9 @@ class Queue_app(http.Controller):
         pdfhttpheaders = [('Content-Type', 'application/pdf'), ('Content-Length', len(pdf))]
         return request.make_response(pdf, headers=pdfhttpheaders)
 
-    @http.route('/queue/appprint/', auth='public')
-    def appprint(self, **kw):
-        env_trans_print = http.request.env['queue.trans.print']
-        transs = env_trans_print.sudo().search([('state','=','open')])
-        if transs:
-            trans = transs[0]
-            trans_data = {}
-            trans_data.update({'state': 'done'})
-            trans.sudo().write(trans_data)            
-            return '{"success":true,"message":"","trans_id":"' + trans.trans_id.trans_id + '"}'
-        else:
-            return '{"success":false,"message":"No Print Data"}'
+    @http.route('/queue/print/receipt/<int:id>', auth='public', auth='user')
+    def appprint(self, id, **kw):
+        return request.render('jakc_queue.receiptprint')
 
     @http.route('/queue/kiosk', auth='public')
     def queue_kiosk(self, **kw):

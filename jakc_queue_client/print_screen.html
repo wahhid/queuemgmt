@@ -3,13 +3,7 @@
     <link rel="stylesheet" href="static/src/css/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<button id="btnprint">Print</button>
-<iframe id="printf" name="printf">
-    <div class="row">
-        <span>Testing</span>
-    </div>
-
-</iframe>
+<center>Print</center>
 <!-- jQuery 3 -->
 <script src="static/src/js/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
@@ -18,15 +12,9 @@
 <script src="static/src/js/howler/dist/howler.min.js"></script>
 
 <script>
-    $(document).ready(function(e){
-        $('#btnprint').on('click',function(e){
-            console.log("print");
-            myWindow = window.open('http://app02.jakc-labs.com:8069/report/pdf/jakc_queue.report_queuereceipt/589');
-            myWindow.focus();// focus on contentWindow is needed on some ie versions
-            myWindow.print();
-            //setInterval(myWindow.close(), 30000);
-            return false;
-        });
+    $(document).ready(function (e){
+        printWindow = window.open('http://app02.jakc-labs.com:8069
+        window.print();
     });
 </script>
 </body>
