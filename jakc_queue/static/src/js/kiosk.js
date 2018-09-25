@@ -46,7 +46,8 @@ $(document).ready(function () {
                 $('#counter_trans').text(resp.counter_trans);
                 $('.widget-user-header').removeClass().addClass('widget-user-header ' + resp.counter_bg);
                 $('.badge').removeClass().addClass('badge ' + resp.counter_bg);
-                printReceipt(resp);
+                //printReceipt(resp);
+                openWin(resp.trans_id);
             },
             error        : function(xhr, status, error){
                 alert(xhr);
@@ -95,7 +96,7 @@ $(document).ready(function () {
     function openWin(id)
     {
         console.log('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString())
-        pdfWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString(),'','width=10,height=10');
+        pdfWindow=window.open('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString(),'','width=300,height=200');
         pdfWindow.onload = function(){
             pdfWindow.focus();
             pdfWindow.print();
