@@ -46,8 +46,7 @@ $(document).ready(function () {
                 $('#counter_trans').text(resp.counter_trans);
                 $('.widget-user-header').removeClass().addClass('widget-user-header ' + resp.counter_bg);
                 $('.badge').removeClass().addClass('badge ' + resp.counter_bg);
-                openWin(resp.trans_id)
-                //printQueue(resp.trans_id)
+                printReceipt(resp);
             },
             error        : function(xhr, status, error){
                 alert(xhr);
@@ -76,6 +75,7 @@ $(document).ready(function () {
     }
 
     function printReceipt(data){
+        console.log("Print Using Recta");
         var printer = new Recta('APPKEY', '1811')
         printer.open().then(function () {
           printer.align('center')
@@ -101,11 +101,6 @@ $(document).ready(function () {
             pdfWindow.print();
             pdfWindow.close();
         }
-        //myWindow.document.write("<p>This is 'myWindow'</p>");
-        //myWindow.document.close(); //missing code
-        //myWindow.focus();
-        //myWindow.print();
-        //myWindow.close();
     }
 });
 
