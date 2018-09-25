@@ -90,19 +90,33 @@
             console.log(resp);
             if (resp.status == true){
                 console.log("Play Sound");
-                var audio = new Audio('/jakc_queue/static/src/snd/1.MP3');
-                audio.loop = false;
-                audio.play();
-                 var audio = new Audio('/jakc_queue/static/src/snd/1.MP3');
-                audio.loop = false;
-                audio.play();
-                 var audio = new Audio('/jakc_queue/static/src/snd/1.MP3');
-                audio.loop = false;
-                audio.play();
+                file_names = [
+                    '/jakc_queue/static/src/snd/nomor-urut.MP3',
+                    '/jakc_queue/static/src/snd/1.MP3',
+                    '/jakc_queue/static/src/snd/1.MP3',
+                    '/jakc_queue/static/src/snd/1.MP3',
+                    '/jakc_queue/static/src/snd/konter.MP3',
+                    '/jakc_queue/static/src/snd/1.MP3',
+                ]
+                play_audio(file_names);
             }
         })
         .fail(function(jqXHR, textStatus, errorThrown){
             console.log('getJSON request failed! ' + textStatus);
         });
+    }
+
+    function play_audio(file_names) {
+        sound = new Howl({
+            src: [audio_url+file_names[0]],
+            volume: 0.5,
+            onend: function() {
+                file_names.shift();
+                if (file_names.length > 0) {
+                    play_audio(file_names);
+                }
+            }
+        });
+        sound.play();
     }
   });
