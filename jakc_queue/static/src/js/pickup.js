@@ -77,6 +77,7 @@ $(document).ready(function () {
         .fail(function(jqXHR, textStatus, errorThrown){
             console.log('getJSON request failed! ' + textStatus);
         });
+    }
 
     function finishQueue(id){
         console.log("Finish");
