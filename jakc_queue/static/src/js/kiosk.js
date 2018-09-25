@@ -96,7 +96,7 @@ $(document).ready(function () {
 
     function openWin(id)
     {
-        pdfWindow=window.open('/queue/print/receipt/'+ id.toString() + '/','','width=300,height=200');
+        pdfWindow=window.open('/queue/receipt/'+ id.toString() + '/','','width=300,height=200');
     }
 });
 
