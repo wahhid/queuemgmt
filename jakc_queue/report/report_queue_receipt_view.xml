@@ -3,22 +3,39 @@
     <data>
         <template id="report_queuereceipt_document">
             <div class="page">
+                 <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
+                <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
                 <div class="text-center">
                     <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo" width="200px;"/>
                 </div>
-                <br/>
-                <br/>
-                <br/>
+                <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
+                <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
                 <div class="text-center">
                     <strong><span style="font-size:24px">Telkom Indonesia</span></strong>
                 </div>
-                <br/>
-                <br/>
-                <br/>
+                <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
+                <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
                 <div class="text-center">
                     <span  t-esc="o.trans_id" style="font-size:68px;"/>
                 </div>
-                <br/>
+                <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
+                <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
                 <br/>
                 <br/>
             </div>
