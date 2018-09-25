@@ -92,14 +92,15 @@
             counter_number = resp.counter_number;
             if (resp.status == true){
                 console.log("Play Sound");
+                str_length = counter_trans.length;
                 file_names = [
-                    '/jakc_queue/static/src/snd/nomor-urut.MP3',
-                    '/jakc_queue/static/src/snd/' + counter_trans.charAt(0) + '.MP3',
-                    '/jakc_queue/static/src/snd/' + counter_trans.charAt(1) + '.MP3',
-                    '/jakc_queue/static/src/snd/' + counter_trans.charAt(2) + '.MP3',
-                    '/jakc_queue/static/src/snd/konter.MP3',
-                    '/jakc_queue/static/src/snd/' + counter_number + '.MP3',
-                ]
+                                '/jakc_queue/static/src/snd/nomor-urut.MP3',
+                                '/jakc_queue/static/src/snd/' + counter_trans_str.charAt(0)  + '.MP3',
+                                '/jakc_queue/static/src/snd/' + counter_trans_str.charAt(1)  + '.MP3',
+                                '/jakc_queue/static/src/snd/' + counter_trans_str.charAt(2)  + '.MP3',
+                                '/jakc_queue/static/src/snd/konter.MP3',
+                                '/jakc_queue/static/src/snd/' + counter_number + '.MP3',
+                            ]
                 play_audio(file_names);
             }
         })
