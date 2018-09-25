@@ -220,7 +220,13 @@ class Queue_app(http.Controller):
 
     @http.route('/queue/receipt/<int:id>', auth='user')
     def queue_receipt(self, id, **kw):
-        return request.render('jakc_queue.receiptprint')
+        queue_trans_obj = http.request.env['queue.trans']
+        queue_trans = queue_trans_obj.browse(id)
+        if queue_trans:
+            trans_data = {}
+            trans_data.update({'counter_trans': trans_data.name})
+            trans_data.update({'counter_type': trans_data.type_id.name})
+            return request.render('jakc_queue.receiptprint', {'data': trans_data})
 
     @http.route('/queue/kiosk', auth='public')
     def queue_kiosk(self, **kw):
