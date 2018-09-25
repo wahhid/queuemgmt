@@ -36,8 +36,12 @@
                 <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
-                <br/>
-                <br/>
+                <div class="text-center">
+                    <strong><span style="font-size:24px"><t t-esc="o.type_id.name"/></span></strong>
+                </div>
+                <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
             </div>
         </template>
 
