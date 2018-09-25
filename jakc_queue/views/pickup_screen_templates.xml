@@ -95,8 +95,8 @@
                                             <div class="box box-widget widget-user">
                                                 <!-- Add the bg color to the header using any of the bg-* classes -->
                                                 <div class="widget-user-header">
-                                                    <h3 class="widget-user-username" id="counter_name"><t t-esc="trans['counter_name']"/></h3>
-                                                    <h5 class="widget-user-desc" id="counter_user"><t t-esc="trans['counter_user']"/></h5>
+                                                    <h3 class="widget-user-username" id="counter_name">Not Available</h3>
+                                                    <h5 class="widget-user-desc" id="counter_user">Not Available</h5>
                                                 </div>
                                                 <div class="widget-user-image">
                                                     <img class="img-circle"
@@ -106,7 +106,7 @@
                                                     <input type="hidden" id="trans_id" value=""/>
                                                     <center>
                                                         <span class="badge" style="margin:20px;font-size:148px;"
-                                                              id="counter_trans"><t t-esc="trans['counter_trans']"/>
+                                                              id="counter_trans">---
                                                         </span>
                                                     </center>
                                                 </div>
