@@ -20,9 +20,9 @@
                     <!-- Custom styles for this document -->
                     <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'/>
                     <style>
-                        body   { font-family: serif }
-                        h1     { font-family: 'serif', cursive; font-size: 40pt; line-height: 18mm}
-                        h2, h3 { font-family: 'serif', cursive; font-size: 24pt; line-height: 7mm }
+                        body   { font-family: serif; margin: 20mm; }
+                        h1     { font-family: serif; font-size: 40pt; line-height: 18mm}
+                        h2, h3 { font-family: serif; cursive; font-size: 24pt; line-height: 7mm }
                         h4     { font-size: 32pt; line-height: 14mm }
                         h2 + p { font-size: 18pt; line-height: 7mm }
                         h3 + p { font-size: 14pt; line-height: 7mm }
