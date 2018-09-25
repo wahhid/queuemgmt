@@ -56,12 +56,12 @@ class QueuePickup(http.Controller):
             pickup_data.update({'pickup_id': pickup_log.pickup_id.id})
             return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data})
 
-    @http.route('/queue/pickup/current', type='http', auth='user')
-    def queue_pickup_current(self, **kwargs):
+    @http.route('/queue/pickup/current/<int:pickup_id>/', type='http', auth='user')
+    def queue_pickup_current(self, pickup_id, **kwargs):
         queue_pickup_obj = http.request.env['queue.pickup']
         queue_pickup_log_obj = http.request.env['queue.pickup.log']
         queue_trans_obj = http.request.env['queue.trans']
-        pickup = queue_pickup_obj.browse(id)
+        pickup = queue_pickup_obj.browse(pickup_id)
         if pickup:
             trans_args = [('state', '=', 'open'), ('type_id', '=', pickup.type_id.id)]
             trans_id = queue_trans_obj.search(trans_args, limit=1)

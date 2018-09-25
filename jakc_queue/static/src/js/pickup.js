@@ -24,7 +24,7 @@ $(document).ready(function () {
 
     function loadCurrentQueue(){
         pickup_id = $('.pickup-id').text().trim();
-        $.getJSON('/queue/pickup/current/', function (data) {
+        $.getJSON('/queue/pickup/current/' + pickup_id + '/', function (data) {
         })
         .done(function(resp){
             console.log(resp);
