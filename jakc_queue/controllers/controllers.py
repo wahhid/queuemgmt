@@ -265,7 +265,7 @@ class Queue_app(http.Controller):
         return request.make_response(pdf, headers=pdfhttpheaders)
 
     @http.route('/queue/print/receipt/<int:id>', auth='public', auth='user')
-    def appprint(self, id, **kw):
+    def queue_print_receipt(self, id, **kw):
         return request.render('jakc_queue.receiptprint')
 
     @http.route('/queue/kiosk', auth='public')
