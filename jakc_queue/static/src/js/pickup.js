@@ -8,10 +8,10 @@ $(document).ready(function () {
        if($(this).attr('code') === 'pickup'){
             pickup_id = $('.pickup-id').text().trim();
             trans_id = $('#trans_id').val();
-            if (trans_id != null){
-                alert('Cannot Pickup New Queue');
+            if (trans_id == ""){
+                pickupQueue(pickup_id);
             }else{
-                 pickupQueue(pickup_id)
+                alert('Cannot pickup new queue, Please finish current queue');
             }
 
 
