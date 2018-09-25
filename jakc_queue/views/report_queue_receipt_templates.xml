@@ -3,16 +3,16 @@
         <template id="receiptprint">
             <html>
                 <head>
-                    <link rel="stylesheet" href="static/src/css/bootstrap/dist/css/bootstrap.min.css"/>
+                    <link rel="stylesheet" href="/jakc_queue/static/src/css/bootstrap/dist/css/bootstrap.min.css"/>
                 </head>
                 <body>
                     <center>Print</center>
                     <!-- jQuery 3 -->
-                    <script src="static/src/js/jquery/dist/jquery.min.js"></script>
+                    <script src="/jakc_queue/static/src/js/jquery/dist/jquery.min.js"></script>
                     <!-- Bootstrap 3.3.7 -->
-                    <script src="static/src/js/bootstrap/dist/js/bootstrap.min.js"></script>
+                    <script src="/jakc_queue/static/src/js/bootstrap/dist/js/bootstrap.min.js"></script>
 
-                    <script src="static/src/js/receipt.js"></script>
+                    <script src="/jakc_queue/static/src/js/receipt.js"></script>
                 </body>
             </html>
         </template>
