@@ -224,7 +224,7 @@ class Queue_app(http.Controller):
         queue_trans = queue_trans_obj.browse(id)
         if queue_trans:
             trans_data = {}
-            trans_data.update({'counter_trans': trans_data.name})
+            trans_data.update({'counter_trans': trans_data.trans_id})
             trans_data.update({'counter_type': trans_data.type_id.name})
             return request.render('jakc_queue.receiptprint', {'data': trans_data})
 
