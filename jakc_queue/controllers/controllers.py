@@ -175,7 +175,9 @@ class Queue_display(http.Controller):
         trans = {}
         if queue_trans:
             queue_trans.iface_recall = False
-            trans.update({'counter_trans': queue_trans.trans_id})
+            trans.update({'status': True, 'counter_trans': queue_trans.trans_id})
+        else:
+            trans.update({'status': False, 'counter_trans': {}})
         return json.dumps(trans)
 
 class Queue(http.Controller):
