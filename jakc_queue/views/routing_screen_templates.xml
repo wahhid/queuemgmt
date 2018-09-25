@@ -327,6 +327,8 @@
                     <script src="/jakc_queue/static/src/js/adminlte.min.js"></script>
                     <!-- AdminLTE for demo purposes -->
                     <script src="/jakc_queue/static/src/js/demo.js"></script>
+
+                    <script src="/jakc_queue/static/src/js/howler/dist/howler.min.js"></script>
                     <!-- AdminLTE for demo purposes -->
                     <script src="/jakc_queue/static/src/js/routing.js"></script>
 
