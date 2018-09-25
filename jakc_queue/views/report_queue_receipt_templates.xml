@@ -20,7 +20,7 @@
                     <!-- Custom styles for this document -->
                     <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'/>
                     <style>
-                        body   { font-family: serif; margin: 20mm; }
+                        body   { font-family: serif;}
                         h1     { font-family: serif; font-size: 40pt; line-height: 18mm}
                         h2, h3 { font-family: serif; cursive; font-size: 24pt; line-height: 7mm }
                         h4     { font-size: 32pt; line-height: 14mm }
@@ -44,9 +44,9 @@
 
                     <!-- Each sheet element should have the class "sheet" -->
                     <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
-                    <section class="sheet padding-20mm">
+                    <section class="sheet">
                         <center><h1>Telkom Indonesia</h1></center>
-                        <center><h4>001</h4></center>
+                        <center><span style="font-size:68px;">001</span></center>
                     </section>
                     <!-- jQuery 3 -->
                     <script src="/jakc_queue/static/src/js/jquery/dist/jquery.min.js"></script>
