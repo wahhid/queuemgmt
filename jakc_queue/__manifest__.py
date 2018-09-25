@@ -18,8 +18,8 @@
     'data': [
         'security/jakc_queue_security.xml',
         'security/ir.model.access.csv',
-        'views/jakc_queue_menu.xml',
         'views/jakc_queue_view.xml',
+        'views/jakc_queue_menu.xml',
         'views/jakc_queue_pickup_dashboard.xml',
         'views/templates.xml',
         'views/routing_screen_templates.xml',
