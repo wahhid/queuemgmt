@@ -6,7 +6,20 @@
                     <link rel="stylesheet" href="/jakc_queue/static/src/css/bootstrap/dist/css/bootstrap.min.css"/>
                 </head>
                 <body>
-                    <center>Print</center>
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <span style="font-size:48px;">Telkom Indonesia</span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div class="col-md-12 col-xs-12 text-center">
+                            <span style="font-size:72px;">000</span>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
                     <!-- jQuery 3 -->
                     <script src="/jakc_queue/static/src/js/jquery/dist/jquery.min.js"></script>
                     <!-- Bootstrap 3.3.7 -->
