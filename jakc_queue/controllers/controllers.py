@@ -54,22 +54,28 @@ class QueuePickup(http.Controller):
             _logger.info(pickup_log)
             pickup_data = {}
             pickup_data.update({'pickup_id': pickup_log.pickup_id.id})
-            queue_trans_args = [('state','=','open'),('pickup_id','=',pickup_log.pickup_id.id)]
-            trans = queue_trans_obj.search(queue_trans_args, limit=1)
-            if trans:
-                trans_data = {}
-                trans_data.update({'id': trans.id})
-                trans_data.update({'counter_trans': trans.trans_id})
-                trans_data.update({'counter_name': trans.type_id.name})
-                trans_data.update({'counter_bg': trans.type_id.bg_color})
-            else:
-                trans_data = {}
-                trans_data.update({'id': ''})
-                trans_data.update({'counter_trans': '---'})
-                trans_data.update({'counter_name': 'Not Available'})
-                trans_data.update({'counter_bg': ''})
+            return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data})
 
-            return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data, 'trans': trans })
+    @http.route('queue/pickup/current', type='http', auth='user')
+    def queue_pickup_current(self, **kwargs):
+        queue_pickup_obj = http.request.env['queue.pickup']
+        queue_pickup_log_obj = http.request.env['queue.pickup.log']
+        queue_trans_obj = http.request.env['queue.trans']
+        pickup = queue_pickup_obj.browse(id)
+        if pickup:
+            trans_args = [('state', '=', 'open'), ('type_id', '=', pickup.type_id.id)]
+            trans_id = queue_trans_obj.search(trans_args, limit=1)
+            if trans_id:
+                trans_data = {}
+                trans_data.update({'id': trans_id.id})
+                trans_data.update({'counter_trans': trans_id.trans_id})
+                trans_data.update({'counter_name': trans_id.type_id.name})
+                trans_data.update({'counter_bg': trans_id.type_id.bg_color})
+                return json.dumps(trans_data)
+            else:
+                return '{"success":false,"message":"No Queue"}'
+        else:
+            return '{"success":false,"message":"No Queue"}'
 
 
     @http.route('/queue/pickup/<int:id>/', auth='public')

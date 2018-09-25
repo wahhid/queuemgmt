@@ -2,6 +2,8 @@ $(document).ready(function () {
 
     $('.sidebar-menu').tree();
 
+    loadCurrentQueue();
+
     $('button').on('click', function (e){
        //console.log('click');
        //alert($(this).attr('code'));
@@ -13,8 +15,6 @@ $(document).ready(function () {
             }else{
                 alert('Cannot pickup new queue, Please finish current queue');
             }
-
-
        }
        if($(this).attr('code') === 'finish'){
             trans_id = $('#trans_id').val();
@@ -61,7 +61,7 @@ $(document).ready(function () {
         });
     }
 
-     function finishQueue(id){
+    function finishQueue(id){
         console.log("Finish");
         console.log(id);
         $.getJSON('/queue/finish/' + id + '/', function (data) {

@@ -1,12 +1,14 @@
 
   $(document).ready(function () {
     $('.sidebar-menu').tree();
+
     //Loading Counter
     setInterval(loadCounter, 1000);
     //Loading Queuing
     setInterval(loadQueue, 1000);
     //Loading Sound
     setInterval(loadSound, 1000);
+
 
     function loadCounter(){
         //$.getJSON('static/src/json/counter.json', function (data) {
