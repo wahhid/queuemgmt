@@ -218,9 +218,9 @@ class Queue_app(http.Controller):
         except:
             return '{"success":false,"message":"Error"}'
 
-    @http.route('/queue/print/receipt/<int:id>', auth='public', auth='user')
-    def queue_print_receipt(self, id, **kw):
-        return request.render('jakc_queue.receiptprint')
+    #@http.route('/queue/print/receipt/<int:id>', auth='public', auth='user')
+    #def queue_print_receipt(self, id, **kw):
+    #    return request.render('jakc_queue.receiptprint')
 
     @http.route('/queue/kiosk', auth='public')
     def queue_kiosk(self, **kw):
