@@ -4,17 +4,23 @@
         <template id="report_queuereceipt_document">
             <div class="page">
                 <div class="text-center">
-                    <h2>Queue Receipt</h2>
-                </div>
-                <div class="text-center">
-                    <h2>Telkom Indonesia</h2>
+                    <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo"/>
                 </div>
                 <br/>
+                <br/>
+                <br/>
                 <div class="text-center">
-                    <h2>
-                        <t t-esc="o.trans_id"/>
-                    </h2>
+                    <strong><span style="font-size:24px">Telkom Indonesia</span></strong>
                 </div>
+                <br/>
+                <br/>
+                <br/>
+                <div class="text-center">
+                    <span  t-esc="o.trans_id" style="font-size:68px;"/>
+                </div>
+                <br/>
+                <br/>
+                <br/>
             </div>
         </template>
 

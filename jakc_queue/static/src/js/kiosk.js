@@ -80,15 +80,16 @@ $(document).ready(function () {
         var printer = new Recta('12345678', '1811')
         printer.open().then(function () {
           printer.align('center')
-            .text('Hello World !!')
             .bold(true)
-            .text('This is bold text')
-            .bold(false)
-            .underline(true)
-            .text('This is underline text')
-            .underline(false)
-            .barcode('UPC-A', '123456789012')
+            .text('Telkom Indonesia')
+            .bold(true)
+            .text('No Antrian')
+            .bold(true)
+            .text('001')
+            .print()
+            .print()
             .cut()
+            .print()
             .print()
         });
     }

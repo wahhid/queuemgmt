@@ -21,9 +21,10 @@
     $(document).ready(function(e){
         $('#btnprint').on('click',function(e){
             console.log("print");
-            var frm = document.getElementById('printf').contentWindow;
-            frm.focus();// focus on contentWindow is needed on some ie versions
-            frm.print();
+            myWindow = window.open('http://app02.jakc-labs.com:8069/report/pdf/jakc_queue.report_queuereceipt/589');
+            myWindow.focus();// focus on contentWindow is needed on some ie versions
+            myWindow.print();
+            //setInterval(myWindow.close(), 30000);
             return false;
         });
     });

@@ -361,7 +361,7 @@
                     <!-- AdminLTE for demo purposes -->
                     <script src="/jakc_queue/static/src/js/demo.js"></script>
                     <!-- Print.js -->
-                    <script src="/jakc_queue/static/src/js/print.min.js"></script>
+                    <script src="/jakc_queue/static/src/js/recta/src/recta.js"></script>
                     <!-- Kiosk.js -->
                     <script src="/jakc_queue/static/src/js/kiosk.js"></script>
                 </body>
