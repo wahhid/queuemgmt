@@ -46,8 +46,8 @@
                     <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
                     <section class="sheet">
                         <center><h1>Telkom Indonesia</h1></center>
-                        <center><span style="font-size:68px;"><t t-esc="data.counter_trans"/></span></center>
-                        <center><span style="font-size:24px;"><t t-esc="data.counter_type"/></span></center>
+                        <center><span style="font-size:68px;"><t t-esc="data['counter_trans']"/></span></center>
+                        <center><span style="font-size:24px;"><t t-esc="data['counter_type']"/></span></center>
                     </section>
                     <!-- jQuery 3 -->
                     <script src="/jakc_queue/static/src/js/jquery/dist/jquery.min.js"></script>
