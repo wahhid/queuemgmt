@@ -107,8 +107,9 @@
     }
 
     function play_audio(file_names) {
+        console.log(file_names)
         sound = new Howl({
-            src: [audio_url+file_names[0]],
+            src: [file_names[0]],
             volume: 0.5,
             onend: function() {
                 file_names.shift();

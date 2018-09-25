@@ -8,23 +8,33 @@
 <script src="static/src/js/howler/dist/howler.min.js"></script>
 <script>
 
-function playSound(src){
-    var state = false;
-    var sound = new Howl({
-        src: [src],
-        onend: function(){
-            state = true;
-        }
-    });
-    sound.play();
-}
-
 $(document).ready(function(e) {
-    playSound('static/src/snd/1.MP3');
-    while (playSound.state == false){
-        console.log('false');
+
+               file_names = [
+                    'static/src/snd/nomor-urut.MP3',
+                    'static/src/snd/1.MP3',
+                    'static/src/snd/1.MP3',
+                    'static/src/snd/1.MP3',
+                    'static/src/snd/konter.MP3',
+                    'static/src/snd/1.MP3',
+                ]
+                play_audio(file_names);
+
+    function play_audio(file_names) {
+        console.log(file_names)
+        sound = new Howl({
+            src: [file_names[0]],
+            volume: 0.5,
+            onend: function() {
+                file_names.shift();
+                if (file_names.length > 0) {
+                    play_audio(file_names);
+                }
+            }
+        });
+        sound.play();
     }
-    playSound('static/src/snd/2.MP3');
+
 });
 
 </script>
