@@ -24,7 +24,21 @@ $(document).ready(function () {
 
     function loadCurrentQueue(){
         pickup_id = $('.pickup-id').text().trim();
+        $.getJSON('/queue/pickup/current/', function (data) {
+        })
+        .done(function(resp){
+            console.log(resp);
+            console.log(resp.counter_name)
+            $('#trans_id').val(resp.id);
+            $('#counter_name').text(resp.counter_name);
+            $('#counter_trans').text(resp.counter_trans);
+            $('.widget-user-header').removeClass().addClass('widget-user-header ' + resp.counter_bg);
+            $('.badge').removeClass().addClass('badge ' + resp.counter_bg);
 
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+            console.log('getJSON request failed! ' + textStatus);
+        });
     }
 
     function pickupQueue(id){

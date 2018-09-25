@@ -46,15 +46,24 @@ class QueuePickup(http.Controller):
     @http.route('/queue/pickup/screen/', type='http', auth='user')
     def queue_pickup_screen(self, **kwargs):
         # if user not logged in, log him in
-        pickup_logs = http.request.env['queue.pickup.log'].search_read([
+        queue_trans_obj = http.request.env['queue.trans']
+        pickup_log = http.request.env['queue.pickup.log'].search([
             ('state', '=', 'opened'),
             ('user_id', '=', http.request.session.uid), ], limit=1)
-        if len(pickup_logs) == 1:
-            pickup_log = pickup_logs[0]
+        if pickup_log:
             _logger.info(pickup_log)
             pickup_data = {}
-            pickup_data.update({'pickup_id': pickup_log['pickup_id'][0]})
-            return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data, })
+            pickup_data.update({'pickup_id': pickup_log.pickup_id.id})
+            queue_trans_args = [('state','=','open'),('pickup_id','=',pickup_log.pickup_id.id)]
+            trans = queue_trans_obj.search(queue_trans_args, limit=1)
+            if trans:
+                trans_data = {}
+                trans_data.update({'id': trans.id})
+                trans_data.update({'counter_trans': trans.trans_id})
+                trans_data.update({'counter_name': trans.type_id.name})
+                trans_data.update({'counter_bg': trans.type_id.bg_color})
+            return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data, 'trans': trans })
+
 
     @http.route('/queue/pickup/<int:id>/', auth='public')
     def pickup(self, id):
