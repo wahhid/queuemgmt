@@ -76,7 +76,7 @@ $(document).ready(function () {
 
     function printReceipt(data){
         console.log("Print Using Recta");
-        var printer = new Recta('APPKEY', '1811')
+        var printer = new Recta('APPKEY', '12345678')
         printer.open().then(function () {
           printer.align('center')
             .text('Hello World !!')
