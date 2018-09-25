@@ -21,8 +21,8 @@
                     <link href='https://fonts.googleapis.com/css?family=Tangerine:700' rel='stylesheet' type='text/css'/>
                     <style>
                         body   { font-family: serif }
-                        h1     { font-family: 'Tangerine', cursive; font-size: 40pt; line-height: 18mm}
-                        h2, h3 { font-family: 'Tangerine', cursive; font-size: 24pt; line-height: 7mm }
+                        h1     { font-family: 'serif', cursive; font-size: 40pt; line-height: 18mm}
+                        h2, h3 { font-family: 'serif', cursive; font-size: 24pt; line-height: 7mm }
                         h4     { font-size: 32pt; line-height: 14mm }
                         h2 + p { font-size: 18pt; line-height: 7mm }
                         h3 + p { font-size: 14pt; line-height: 7mm }
@@ -45,30 +45,8 @@
                     <!-- Each sheet element should have the class "sheet" -->
                     <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
                     <section class="sheet padding-20mm">
-
-                        <h1>OpenSource Cafe, Shimokitazawa</h1>
-                        <ul>
-                            <li>6-11-14-G1 Daita, Setagaya-ku, Tokyo, Japan</li>
-                            <li>TEL: +81-70-54315221</li>
-                            <li>http://www.osscafe.net</li>
-                        </ul>
-
-                        <article>
-                            <h2>Received from:</h2>
-                            <p>John Doe</p>
-
-                            <h3>For:</h3>
-                            <p>Coworking-space fee</p>
-
-                            <h4>1,000-</h4>
-                            <ul>
-                                <li>Tax: included</li>
-                                <li>Paid by: cash</li>
-                                <li>No. 00000</li>
-                                <li>Oct 10, 2015</li>
-                            </ul>
-                        </article>
-
+                        <center><h1>Telkom Indonesia</h1></center>
+                        <center><h4>001</h4></center>
                     </section>
                     <!-- jQuery 3 -->
                     <script src="/jakc_queue/static/src/js/jquery/dist/jquery.min.js"></script>
