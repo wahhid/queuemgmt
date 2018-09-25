@@ -16,6 +16,10 @@ $(document).ready(function () {
                 alert('Cannot pickup new queue, Please finish current queue');
             }
        }
+       if($(this).attr('code') === 'recall'){
+            trans_id = $('#trans_id').val();
+            recallQueue(trans_id)
+       }
        if($(this).attr('code') === 'finish'){
             trans_id = $('#trans_id').val();
             finishQueue(trans_id)
@@ -60,6 +64,19 @@ $(document).ready(function () {
             console.log('getJSON request failed! ' + textStatus);
         });
     }
+
+    function recallQueue(id){
+        console.log("Finish");
+        console.log(id);
+        $.getJSON('/queue/recall/' + id + '/', function (data) {
+
+        })
+        .done(function(resp){
+            console.log(resp);
+        })
+        .fail(function(jqXHR, textStatus, errorThrown){
+            console.log('getJSON request failed! ' + textStatus);
+        });
 
     function finishQueue(id){
         console.log("Finish");

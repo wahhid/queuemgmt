@@ -105,6 +105,13 @@ class QueuePickup(http.Controller):
         else:
             return '{"success":false,"message":"No Queue"}'
 
+    @http.route('/queue/recall/<int:id>/', auth='public')
+    def finish(self, id):
+        queue_trans_obj = http.request.env['queue.trans']
+        trans = queue_trans_obj.browse(id)
+        trans.write({'recall_date_time': datetime.now(), 'iface_recall': True})
+        return json.dumps({'status': True})
+
     @http.route('/queue/finish/<int:id>/', auth='public')
     def finish(self, id):
         queue_trans_obj = http.request.env['queue.trans']
