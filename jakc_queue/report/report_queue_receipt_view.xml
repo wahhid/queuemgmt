@@ -4,7 +4,7 @@
         <template id="report_queuereceipt_document">
             <div class="page">
                 <div class="text-center">
-                    <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo" width="50px;"/>
+                    <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo" width="200px;"/>
                 </div>
                 <br/>
                 <br/>
