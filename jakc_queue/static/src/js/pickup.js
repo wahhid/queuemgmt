@@ -7,7 +7,14 @@ $(document).ready(function () {
        //alert($(this).attr('code'));
        if($(this).attr('code') === 'pickup'){
             pickup_id = $('.pickup-id').text().trim();
-            pickupQueue(pickup_id)
+            trans_id = $('#trans_id').val();
+            if (trans_id != null){
+                alert('Cannot Pickup New Queue');
+            }else{
+                 pickupQueue(pickup_id)
+            }
+
+
        }
        if($(this).attr('code') === 'finish'){
             trans_id = $('#trans_id').val();

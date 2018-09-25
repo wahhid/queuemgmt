@@ -3,13 +3,30 @@
 
 </head>
 <body>
-<audio controls>
-    <source src="static/src/snd/0.mp3" type="audio/mp3">
-    <source src="static/src/snd/0.mp3" type="audio/mp3">
-    <source src="static/src/snd/1.mp3" type="audio/mp3">
-    <source src="static/src/snd/konter.mp3" type="audio/mp3">
-    <source src="static/src/snd/1.mp3" type="audio/mp3">
-    Your browser does not support the audio element.
-</audio>
+
+<script src="static/src/js/jquery/dist/jquery.min.js"></script>
+<script src="static/src/js/howler/dist/howler.min.js"></script>
+<script>
+
+function playSound(src){
+    var state = false;
+    var sound = new Howl({
+        src: [src],
+        onend: function(){
+            state = true;
+        }
+    });
+    sound.play();
+}
+
+$(document).ready(function(e) {
+    playSound('static/src/snd/1.MP3');
+    while (playSound.state == false){
+        console.log('false');
+    }
+    playSound('static/src/snd/2.MP3');
+});
+
+</script>
 </body>
 </html>

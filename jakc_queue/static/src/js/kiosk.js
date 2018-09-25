@@ -75,6 +75,23 @@ $(document).ready(function () {
         });
     }
 
+    function printReceipt(data){
+        var printer = new Recta('APPKEY', '1811')
+        printer.open().then(function () {
+          printer.align('center')
+            .text('Hello World !!')
+            .bold(true)
+            .text('This is bold text')
+            .bold(false)
+            .underline(true)
+            .text('This is underline text')
+            .underline(false)
+            .barcode('UPC-A', '123456789012')
+            .cut()
+            .print()
+        });
+    }
+
     function openWin(id)
     {
         console.log('/report/pdf/jakc_queue.report_queuereceipt/'+ id.toString())
