@@ -62,6 +62,13 @@ class QueuePickup(http.Controller):
                 trans_data.update({'counter_trans': trans.trans_id})
                 trans_data.update({'counter_name': trans.type_id.name})
                 trans_data.update({'counter_bg': trans.type_id.bg_color})
+            else:
+                trans_data = {}
+                trans_data.update({'id': ''})
+                trans_data.update({'counter_trans': '---'})
+                trans_data.update({'counter_name': 'Not Available'})
+                trans_data.update({'counter_bg': ''})
+
             return request.render('jakc_queue.pickupscreen', {'pickup': pickup_data, 'trans': trans })
 
 
