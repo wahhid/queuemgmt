@@ -42,6 +42,12 @@
                 <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
+                 <div class="row">
+                    <span><![CDATA[&nbsp;]]></span>
+                </div>
+                 <div class="row">
+                   <strong><span style="font-size:24px">...</span></strong>
+                </div>
             </div>
         </template>
 
