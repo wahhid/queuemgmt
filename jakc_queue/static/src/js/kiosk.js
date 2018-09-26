@@ -48,7 +48,7 @@ $(document).ready(function () {
                 $('.badge').removeClass().addClass('badge ' + resp.counter_bg);
                 //printReceipt(resp);
                 //openWin(resp.trans_id);
-                printUrl(resp.trans_id);
+                printUrl(resp.trans_id);xs
             },
             error        : function(xhr, status, error){
                 alert(xhr);

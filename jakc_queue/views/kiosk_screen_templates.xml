@@ -118,10 +118,10 @@
                                                 <!-- /.row -->
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <iframe width="300" height="300" id="printFrame" src=""></iframe>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <iframe width="250" height="250" id="printFrame" src=""></iframe>
                                 </div>
                             </section>
                             <!-- /.content -->
