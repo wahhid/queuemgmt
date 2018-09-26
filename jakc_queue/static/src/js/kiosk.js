@@ -76,24 +76,24 @@ $(document).ready(function () {
         });
     }
 
-    function printReceipt(data){
-        console.log("Print Using Recta");
-        var printer = new Recta('12345678', '1811')
-        printer.open().then(function () {
-          printer.align('center')
-            .bold(true)
-            .text('Telkom Indonesia')
-            .bold(true)
-            .text('No Antrian')
-            .bold(true)
-            .text('001')
-            .print()
-            .print()
-            .cut()
-            .print()
-            .print()
-        });
-    }
+    //function printReceipt(data){
+    //    console.log("Print Using Recta");
+    //    var printer = new Recta('12345678', '1811')
+    //    printer.open().then(function () {
+    //      printer.align('center')
+    //        .bold(true)
+    //        .text('Telkom Indonesia')
+    //        .bold(true)
+    //        .text('No Antrian')
+    //        .bold(true)
+    //        .text('001')
+    //        .print()
+    //        .print()
+    //        .cut()
+    //        .print()
+    //        .print()
+    //    });
+    //}
 
     function openWin(id)
     {
