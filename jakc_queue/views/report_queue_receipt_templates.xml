@@ -26,11 +26,11 @@
                     <!-- "padding-**mm" is optional: you can set 10, 15, 20 or 25 -->
                     <div class="row sheet">
                         <div class="col-md-12 col-xs-12">
-                            <div class="row text-center">
+                            <div class="row">
                                 <center><h1 style="margin-top:50px;margin-bottom:100px;">Telkom Indonesia</h1></center>
                             </div>
-                            <div class="row text-center">
-                                <h4 style="font-size:68px;"><t t-esc="data['counter_trans']"/></h4>
+                            <div class="row">
+                                <h4 style="font-size:68px;"><span class="pagination-centered"><t t-esc="data['counter_trans']"/></span></h4>
                             </div>
                             <div class="row text-center">
                                 <center><h4 style="font-size:24px;"><t t-esc="data['counter_type']"/></h4></center>
