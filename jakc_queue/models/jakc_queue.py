@@ -69,7 +69,7 @@ class QueueType(models.Model):
 
     name = fields.Char('Name', size=30, required=True)
     number = fields.Integer('Number', default=0)
-    bg_color = fields.Selection(AVAILABLE_BG_COLOR, 'Bg Color', default='bg_black')
+    bg_color = fields.Selection(AVAILABLE_BG_COLOR, 'Bg Color', default='bg-red')
     mod_bg_color = fields.Char("Bg Color (String)", size=100, readonly=True)
     is_active = fields.Boolean('Active', default=False) 
     state = fields.Selection(AVAILABLE_STATES, 'Status', size=16 , readonly=True, default='open')
