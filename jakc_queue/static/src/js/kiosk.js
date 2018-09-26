@@ -47,7 +47,8 @@ $(document).ready(function () {
                 $('.widget-user-header').removeClass().addClass('widget-user-header ' + resp.counter_bg);
                 $('.badge').removeClass().addClass('badge ' + resp.counter_bg);
                 //printReceipt(resp);
-                openWin(resp.trans_id);
+                //openWin(resp.trans_id);
+                printUrl(resp.trans_id);
             },
             error        : function(xhr, status, error){
                 alert(xhr);
@@ -96,7 +97,21 @@ $(document).ready(function () {
 
     function openWin(id)
     {
-        pdfWindow=window.open('/queue/receipt/'+ id.toString() + '/','','width=300,height=200');
+        pdfWindow=window.open('/queue/receipt/'+ id.toString() + '/','','width=10,height=10');
+    }
+
+    function printUrl(id) {
+        $('#printFrame').attr('src', '/report/html/jakc_queue.report_queuereceipt/' + id.toString() + '/');
+        $('#printFrame').on("load",function() {
+                var frame = document.getElementById('printFrame');
+                if (!frame) {
+                    alert("Error: Can't find printing frame.");
+                    return;
+                }
+                frame = frame.contentWindow;
+                frame.focus();
+                frame.print();
+        });
     }
 });
 

@@ -3,18 +3,35 @@
     <link rel="stylesheet" href="static/src/css/bootstrap/dist/css/bootstrap.min.css">
 </head>
 <body>
-<center>Print</center>
+<iframe width="250" height="400" id="printFrame" src=""></iframe>
+<button id="btnprint">Print</button>
+
 <!-- jQuery 3 -->
 <script src="static/src/js/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="static/src/js/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<script src="static/src/js/howler/dist/howler.min.js"></script>
-
 <script>
     $(document).ready(function (e){
-        printWindow = window.open('http://app02.jakc-labs.com:8069
-        window.print();
+
+        $('#btnprint').on('click', function(){
+            console.log('print');
+            printUrl('http://app02.jakc-labs.com:8069/report/html/jakc_queue.report_queuereceipt/589');
+        });
+
+        function printUrl(url) {
+            $('#printFrame').attr('src', url);
+            $('#printFrame').on("load",function() {
+                var frame = document.getElementById('printFrame');
+                if (!frame) {
+                    alert("Error: Can't find printing frame.");
+                    return;
+                }
+                frame = frame.contentWindow;
+                frame.focus();
+                frame.print();
+            });
+        }
     });
 </script>
 </body>

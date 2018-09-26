@@ -120,6 +120,9 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <iframe width="250" height="250" id="printFrame" src=""></iframe>
+                                </div>
                             </section>
                             <!-- /.content -->
                         </div>
