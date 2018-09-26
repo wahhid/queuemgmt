@@ -6,9 +6,6 @@
                  <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
-                <div class="row">
-                    <span><![CDATA[&nbsp;]]></span>
-                </div>
                 <div class="text-center">
                     <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo" width="200px;"/>
                 </div>
@@ -18,7 +15,7 @@
                 <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
-                <div class="text-center">
+                <div class="row" style="text-align: center;">
                     <strong><span style="font-size:24px">Telkom Indonesia</span></strong>
                 </div>
                 <div class="row">
@@ -27,7 +24,7 @@
                 <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
-                <div class="text-center">
+                <div class="row" style="text-align: center;">
                     <span  t-esc="o.trans_id" style="font-size:68px;"/>
                 </div>
                 <div class="row">
@@ -36,7 +33,7 @@
                 <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
-                <div class="text-center">
+                <div class="row" style="text-align: center;">
                     <strong><span style="font-size:24px"><t t-esc="o.type_id.name"/></span></strong>
                 </div>
                 <div class="row">
@@ -45,8 +42,8 @@
                  <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
-                 <div class="row">
-                   <strong><span style="font-size:24px">...</span></strong>
+                 <div class="row" style="text-align: center;">
+                     <span style="font-size:24px">...</span>
                 </div>
             </div>
         </template>
