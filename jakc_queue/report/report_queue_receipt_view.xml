@@ -10,16 +10,10 @@
                     <img t-if="res_company.logo" t-att-src="'data:image/png;base64,%s' %res_company.logo" width="200px;"/>
                 </div>
                 <div class="row">
-                    <span><![CDATA[&nbsp;]]></span>
-                </div>
-                <div class="row">
-                    <span><![CDATA[&nbsp;]]></span>
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%d-%m-%Y %H:%M')"/>
                 </div>
                 <div class="row" style="text-align: center;">
                     <strong><span style="font-size:24px">Telkom Indonesia</span></strong>
-                </div>
-                <div class="row">
-                    <span><![CDATA[&nbsp;]]></span>
                 </div>
                 <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
@@ -30,20 +24,14 @@
                 <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
-                <div class="row">
-                    <span><![CDATA[&nbsp;]]></span>
-                </div>
                 <div class="row" style="text-align: center;">
                     <strong><span style="font-size:24px"><t t-esc="o.type_id.name"/></span></strong>
                 </div>
                 <div class="row">
                     <span><![CDATA[&nbsp;]]></span>
                 </div>
-                 <div class="row">
-                    <span><![CDATA[&nbsp;]]></span>
-                </div>
                  <div class="row" style="text-align: center;">
-                     <span style="font-size:24px">...</span>
+                     <span style="font-size:24px">.</span>
                 </div>
             </div>
         </template>
