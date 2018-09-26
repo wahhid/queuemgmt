@@ -29,14 +29,14 @@
                             <div class="row">
                                 <center><h1 style="margin-top:50px;margin-bottom:100px;">Telkom Indonesia</h1></center>
                             </div>
-                            <div class="row">
+                            <div class="row text-center">
                                 <h4 style="font-size:68px;"><span class="pagination-centered"><t t-esc="data['counter_trans']"/></span></h4>
                             </div>
                             <div class="row text-center">
                                 <center><h4 style="font-size:24px;"><t t-esc="data['counter_type']"/></h4></center>
                             </div>
                             <div class="row text-center">
-                                <center><h4 style="font-size:24px;">.</h4></center>
+                                <center><h4 style="font-size:24px;">---</h4></center>
                             </div>
                         </div>
                     </div>
